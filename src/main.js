@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Auto-play video immediately on page load
+  // Force muted property via JS (iOS requires this as a property, not just HTML attribute)
+  video.muted = true;
+  video.setAttribute('playsinline', '');
+
   const isMobile = window.innerWidth <= 768;
   if (isMobile) {
     video.src = "/envato_video_gen_Apr_14_2026_9_35_35.mp4";
@@ -64,8 +68,32 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  // Wait for enough data to play, then attempt autoplay
+  const attemptPlay = () => {
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay was blocked — skip video and go straight to cinematic sequence
+        console.log("Autoplay blocked by browser, skipping to sequence");
+        executeSequence();
+      });
+    }
+  };
+
   video.load();
-  video.play().catch(e => console.log("Autoplay blocked:", e));
+
+  // If video is already ready (cached), play immediately
+  if (video.readyState >= 3) {
+    attemptPlay();
+  } else {
+    video.addEventListener('canplaythrough', attemptPlay, { once: true });
+    // Safety timeout — if video takes too long to load, skip ahead
+    setTimeout(() => {
+      if (video.paused && video.currentTime === 0) {
+        attemptPlay();
+      }
+    }, 3000);
+  }
 
   // ==========================================
   // THREE.JS BESPOKE NEURAL MESH GENERATOR
