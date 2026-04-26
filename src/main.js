@@ -1,13 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const video = document.getElementById('bg-video');
-
   // ==========================================
-  // PHASE 3 & 4 ENGINE (Sequence Execution Abstract)
+  // CINEMATIC SEQUENCE ENGINE
   // ==========================================
   const executeSequence = () => {
-    // 1. Instantly cut video to black
-    gsap.set('.video-wrapper', { opacity: 0 });
     gsap.set('.section-interstitial', { visibility: 'visible', opacity: 1 });
 
     const phrases = [
@@ -45,55 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, "-=1.0");
   };
 
-  // Auto-play video immediately on page load
-  // Force muted property via JS (iOS requires this as a property, not just HTML attribute)
-  video.muted = true;
-  video.setAttribute('playsinline', '');
-
-  const isMobile = window.innerWidth <= 768;
-  if (isMobile) {
-    video.src = "/envato_video_gen_Apr_14_2026_9_35_35.mp4";
-    const timeHandler = () => {
-      if (video.currentTime >= 2.9) {
-        video.pause();
-        video.removeEventListener('timeupdate', timeHandler);
-        executeSequence();
-      }
-    };
-    video.addEventListener('timeupdate', timeHandler);
-  } else {
-    video.src = "/0414.mp4";
-    video.onended = () => {
-      executeSequence();
-    };
-  }
-
-  // Wait for enough data to play, then attempt autoplay
-  const attemptPlay = () => {
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Autoplay was blocked — skip video and go straight to cinematic sequence
-        console.log("Autoplay blocked by browser, skipping to sequence");
-        executeSequence();
-      });
-    }
-  };
-
-  video.load();
-
-  // If video is already ready (cached), play immediately
-  if (video.readyState >= 3) {
-    attemptPlay();
-  } else {
-    video.addEventListener('canplaythrough', attemptPlay, { once: true });
-    // Safety timeout — if video takes too long to load, skip ahead
-    setTimeout(() => {
-      if (video.paused && video.currentTime === 0) {
-        attemptPlay();
-      }
-    }, 3000);
-  }
+  // Launch sequence immediately
+  executeSequence();
 
   // ==========================================
   // THREE.JS BESPOKE NEURAL MESH GENERATOR
