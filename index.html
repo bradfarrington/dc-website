@@ -14,7 +14,61 @@
   <!-- Global Flash Overlay for explosive transition -->
   <div class="flash-overlay" id="flash-overlay"></div>
 
+  <!-- PHASE 1: LANDING — EPIC ACTIVATE BUTTON -->
+  <section class="section-landing" id="section-landing">
+    <div class="landing-content">
 
+      <!-- Top brand pill -->
+      <div class="landing-top">
+        <div class="brand-pill">Digital Craft</div>
+      </div>
+
+      <!-- Center: The Button -->
+      <div class="landing-center">
+        <button class="activate-btn" id="activate-btn" aria-label="Activate">
+          <!-- Outer orbiting rings -->
+          <div class="orbit-ring orbit-ring-1"></div>
+          <div class="orbit-ring orbit-ring-2"></div>
+          <div class="orbit-ring orbit-ring-3"></div>
+          <!-- Glow pulse layer -->
+          <div class="btn-glow-pulse"></div>
+          <!-- Main circle -->
+          <div class="btn-core">
+            <!-- Upward graph SVG icon -->
+            <svg class="graph-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="8,52 22,36 34,42 56,12" stroke="url(#graphGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polygon points="56,12 56,26 42,12" fill="url(#graphGrad)" opacity="0.9"/>
+              <defs>
+                <linearGradient id="graphGrad" x1="8" y1="52" x2="56" y2="12">
+                  <stop offset="0%" stop-color="#a78bfa"/>
+                  <stop offset="100%" stop-color="#ffffff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <!-- Bottom: Headline + subtext -->
+      <div class="landing-bottom">
+        <h1 class="landing-headline">Enhance Your Business</h1>
+        <div class="landing-sub-pill">
+          <span class="pulse-dot"></span>
+          <p class="landing-subtext">Press to see the future</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHASE 2: VIDEO STATE -->
+  <section class="section-video" id="section-video">
+    <div class="video-wrapper">
+      <video muted playsinline webkit-playsinline id="bg-video" preload="auto">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  </section>
   <!-- PHASE 3: DYNAMIC GSAP ARRAY ITERATOR -->
   <section class="section-interstitial" id="section-interstitial">
     <h2 class="cinematic-text" id="cinematic-text"></h2>

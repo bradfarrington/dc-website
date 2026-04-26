@@ -1,9 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Animate landing elements in
+  gsap.set('.brand-pill, .landing-headline, .landing-sub-pill', { y: 20, opacity: 0 });
+  gsap.set('.activate-btn', { scale: 0.85, opacity: 0 });
+
+  const introTL = gsap.timeline({ delay: 0.3 });
+  introTL
+    .to('.brand-pill', { y: 0, opacity: 1, duration: 1, ease: "power3.out" })
+    .to('.activate-btn', { scale: 1, opacity: 1, duration: 1.2, ease: "elastic.out(1, 0.6)" }, "-=0.6")
+    .to('.landing-headline', { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.7")
+    .to('.landing-sub-pill', { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.5");
+
+  // ==========================================
+  // REFERENCES
+  // ==========================================
+  const activateBtn = document.getElementById('activate-btn');
+  const video = document.getElementById('bg-video');
+  const landingSection = document.getElementById('section-landing');
+  let activated = false;
+
   // ==========================================
   // CINEMATIC SEQUENCE ENGINE
   // ==========================================
   const executeSequence = () => {
+    gsap.set('.video-wrapper', { opacity: 0 });
     gsap.set('.section-interstitial', { visibility: 'visible', opacity: 1 });
 
     const phrases = [
@@ -41,8 +61,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }, "-=1.0");
   };
 
-  // Launch sequence immediately
-  executeSequence();
+  // ==========================================
+  // BUTTON CLICK → VIDEO → SEQUENCE
+  // ==========================================
+  activateBtn.addEventListener('click', () => {
+    if (activated) return;
+    activated = true;
+
+    // Glitch exit transition
+    const tl = gsap.timeline();
+    landingSection.classList.add('is-glitching');
+
+    tl.to('.btn-core', {
+      scale: 1.6, duration: 0.12, yoyo: true, repeat: 3, ease: "power1.inOut"
+    })
+    .to('.section-landing', {
+      scale: 3, filter: "blur(20px)", opacity: 0,
+      duration: 0.7, ease: "power4.in"
+    }, "+=0.05")
+    .to('.flash-overlay', { opacity: 1, duration: 0.12 }, "-=0.2")
+    .call(() => {
+      landingSection.style.display = 'none';
+      gsap.set('.section-video', { visibility: 'visible', opacity: 1 });
+
+      // User-initiated click means video.play() will always work on mobile
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        video.src = "/envato_video_gen_Apr_14_2026_9_35_35.mp4";
+        const timeHandler = () => {
+          if (video.currentTime >= 2.9) {
+            video.pause();
+            video.removeEventListener('timeupdate', timeHandler);
+            executeSequence();
+          }
+        };
+        video.addEventListener('timeupdate', timeHandler);
+      } else {
+        video.src = "/0414.mp4";
+        video.onended = () => executeSequence();
+      }
+
+      video.muted = true;
+      video.load();
+      video.play().catch(() => executeSequence());
+    })
+    .to('.flash-overlay', { opacity: 0, duration: 1, ease: "power2.out" });
+  });
 
   // ==========================================
   // THREE.JS BESPOKE NEURAL MESH GENERATOR
