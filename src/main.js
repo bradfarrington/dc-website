@@ -1,20 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. Initial State Load Intro (Slide labels into place seamlessly)
-  gsap.set('.pos-top, .pos-bottom', { y: 25, opacity: 0 });
-  gsap.to('.pos-top, .pos-bottom', { 
-    duration: 1.5, 
-    y: 0, 
-    opacity: 1, 
-    stagger: 0.2, 
-    ease: "power3.out", 
-    delay: 0.2 
-  });
-
-  const coreTrigger = document.getElementById('core-trigger');
   const video = document.getElementById('bg-video');
-  const introSection = document.getElementById('section-initial');
-  let activated = false;
 
   // ==========================================
   // PHASE 3 & 4 ENGINE (Sequence Execution Abstract)
@@ -26,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const phrases = [
       "Your Business Is About To Change",
-      "Bespoke AI Systems",
+      "Bespoke Systems",
       "Built for your business",
       "Designed to evolve",
       "Prepare for absolute impact"
@@ -59,65 +45,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }, "-=1.0");
   };
 
-  coreTrigger.addEventListener('click', () => {
-    if (activated) return;
-    activated = true;
-
-    const tl = gsap.timeline();
-    introSection.classList.add('is-glitching');
-    
-    tl.to('.core-center', {
-      scale: 1.8,
-      duration: 0.15,
-      yoyo: true,
-      repeat: 3,
-      ease: "power1.inOut"
-    })
-    .to('.section-initial', {
-      scale: 4,
-      filter: "blur(20px)",
-      opacity: 0,
-      duration: 0.8,
-      ease: "power4.in"
-    }, "+=0.1")
-    .to('.flash-overlay', {
-      opacity: 1,
-      duration: 0.15
-    }, "-=0.25")
-    .call(() => {
-      introSection.style.display = 'none';
-      gsap.set('.section-video', { visibility: 'visible', opacity: 1 });
-      
-      // Intelligent responsive media routing mapping 3-second explicit limits
-      const isMobile = window.innerWidth <= 768; // Native generic breakpoints
-      if (isMobile) {
-          video.src = "./envato_video_gen_Apr_14_2026_9_35_35.mp4";
-          
-          // Secure polling architecture explicitly cutting exactly around 2.9/3.0 seconds
-          const timeHandler = () => {
-              if (video.currentTime >= 2.9) {
-                  video.pause();
-                  video.removeEventListener('timeupdate', timeHandler);
-                  executeSequence();
-              }
-          };
-          video.addEventListener('timeupdate', timeHandler);
-      } else {
-          video.src = "./0414.mp4";
-          video.onended = () => {
-              executeSequence();
-          };
+  // Auto-play video immediately on page load
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    video.src = "./envato_video_gen_Apr_14_2026_9_35_35.mp4";
+    const timeHandler = () => {
+      if (video.currentTime >= 2.9) {
+        video.pause();
+        video.removeEventListener('timeupdate', timeHandler);
+        executeSequence();
       }
-      
-      video.load();
-      video.play().catch(e => console.log("User autoplay interaction block prevented playback:", e));
-    })
-    .to('.flash-overlay', {
-      opacity: 0,
-      duration: 1.2,
-      ease: "power2.out"
-    });
-  });
+    };
+    video.addEventListener('timeupdate', timeHandler);
+  } else {
+    video.src = "./0414.mp4";
+    video.onended = () => {
+      executeSequence();
+    };
+  }
+
+  video.load();
+  video.play().catch(e => console.log("Autoplay blocked:", e));
 
   // ==========================================
   // THREE.JS BESPOKE NEURAL MESH GENERATOR
