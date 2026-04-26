@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Auto-play video immediately on page load
   const isMobile = window.innerWidth <= 768;
   if (isMobile) {
-    video.src = "./envato_video_gen_Apr_14_2026_9_35_35.mp4";
+    video.src = "/envato_video_gen_Apr_14_2026_9_35_35.mp4";
     const timeHandler = () => {
       if (video.currentTime >= 2.9) {
         video.pause();
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     video.addEventListener('timeupdate', timeHandler);
   } else {
-    video.src = "./0414.mp4";
+    video.src = "/0414.mp4";
     video.onended = () => {
       executeSequence();
     };

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Arboria Book';
-  src: url('../Arboria%20Book%20Font/Arboria-Book/Arboria-Book.ttf') format('truetype');
+  src: url('/Arboria-Book.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
