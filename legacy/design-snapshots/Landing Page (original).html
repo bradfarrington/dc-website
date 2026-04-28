@@ -7,7 +7,6 @@
 <link rel="icon" type="image/png" href="assets/logo-mark-black.png">
 <link rel="stylesheet" href="colors_and_type.css">
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
@@ -100,7 +99,7 @@ img { display: block; max-width: 100%; }
   display: flex; align-items: center; gap: 0; height: 68px;
 }
 .nav-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-right: 40px; }
-.nav-brand img { height: 34px; }
+.nav-brand img { height: 22px; }
 .nav-brand span { font-family: var(--font-display); font-size: 19px; letter-spacing: -0.025em; color: var(--dc-black); }
 .nav-links { display: flex; gap: 6px; flex: 1; }
 .nav-links a {
@@ -146,29 +145,13 @@ img { display: block; max-width: 100%; }
   background-size: 72px 72px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 100%);
-  z-index: 1;
-}
-.hero-mesh-canvas {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.85;
-}
-.hero-mesh-fade {
-  position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 40%, transparent 0%, rgba(0,0,0,0.55) 90%),
-    linear-gradient(to bottom, transparent 60%, var(--dc-black));
-  z-index: 1;
 }
 .hero-accent-line {
   position: absolute; top: 0; left: 50%; width: 1px; height: 100%;
   background: linear-gradient(to bottom, transparent, var(--dc-accent) 40%, transparent);
   opacity: 0.18; pointer-events: none;
-  z-index: 2;
 }
-.hero-content { position: relative; max-width: 960px; z-index: 2; }
+.hero-content { position: relative; max-width: 960px; }
 .hero-eyebrow { margin-bottom: 28px; }
 .hero h1 {
   font-family: var(--font-display);
@@ -485,7 +468,7 @@ img { display: block; max-width: 100%; }
   display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px;
   padding-bottom: 64px; border-bottom: 1px solid var(--dc-graphite);
 }
-.footer-brand img { height: 40px; }
+.footer-brand img { height: 22px; }
 .footer-brand p {
   font-size: 14px; color: var(--dc-stone); line-height: 1.6;
   max-width: 260px; margin-top: 16px;
@@ -670,7 +653,7 @@ img { display: block; max-width: 100%; }
 const { useState, useEffect, useRef } = React;
 
 /* ─── Scroll helper ───────────────────────────────────────── */
-function scrollToSection(id) {
+function scrollTo(id) {
   const el = document.getElementById(id);
   if (!el) return;
   const top = el.getBoundingClientRect().top + window.scrollY - 80;
@@ -702,7 +685,7 @@ function Nav({ onCTA }) {
     { label: "How it works", id: "how-it-works" },
     { label: "Case studies", id: "case-studies" },
   ];
-  const handleNav = (id) => { setMenuOpen(false); scrollToSection(id); };
+  const handleNav = (id) => { setMenuOpen(false); scrollTo(id); };
   return (
     <>
       <nav className="nav">
@@ -712,7 +695,7 @@ function Nav({ onCTA }) {
           </a>
           <div className="nav-links">
             {navLinks.map(l => (
-              <a key={l.id} href={"#" + l.id} onClick={e => { e.preventDefault(); scrollToSection(l.id); }}>{l.label}</a>
+              <a key={l.id} href={"#" + l.id} onClick={e => { e.preventDefault(); scrollTo(l.id); }}>{l.label}</a>
             ))}
           </div>
           <div className="nav-actions">
@@ -740,100 +723,9 @@ function Nav({ onCTA }) {
 }
 
 /* ─── Hero ────────────────────────────────────────────────── */
-function HeroMeshCanvas() {
-  const canvasRef = useRef(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !window.THREE) return;
-    const THREE = window.THREE;
-
-    const hero = canvas.parentElement;
-    const getSize = () => ({
-      w: hero.clientWidth || window.innerWidth,
-      h: hero.clientHeight || window.innerHeight,
-    });
-
-    const scene = new THREE.Scene();
-    let { w, h } = getSize();
-    const camera = new THREE.PerspectiveCamera(60, w / h, 1, 3000);
-    camera.position.set(0, 0, 0);
-
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(w, h, false);
-
-    const particleCount = 4000;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-    const colorAccent = new THREE.Color(0xa78bfa);
-    const colorWhite = new THREE.Color(0xffffff);
-
-    for (let i = 0; i < particleCount; i++) {
-      const r = 100 + 1200 * Math.random();
-      const theta = 2 * Math.PI * Math.random();
-      const phi = Math.acos(2 * Math.random() - 1);
-      positions[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
-      positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      positions[i * 3 + 2] = r * Math.cos(phi);
-      const mix = Math.random();
-      const c = mix > 0.5 ? colorAccent : colorWhite;
-      colors[i * 3] = c.r; colors[i * 3 + 1] = c.g; colors[i * 3 + 2] = c.b;
-    }
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
-
-    const material = new THREE.PointsMaterial({
-      size: 1.2, vertexColors: true, transparent: true,
-      opacity: 0.9, blending: THREE.AdditiveBlending,
-    });
-    const mesh = new THREE.Points(geometry, material);
-    scene.add(mesh);
-
-    let mouseX = 0, mouseY = 0;
-    const onMove = (e) => {
-      const rect = hero.getBoundingClientRect();
-      if (e.clientY < rect.top || e.clientY > rect.bottom) return;
-      mouseX = e.clientX - (rect.left + rect.width / 2);
-      mouseY = e.clientY - (rect.top + rect.height / 2);
-    };
-    document.addEventListener('mousemove', onMove);
-
-    let running = true;
-    const tick = () => {
-      if (!running) return;
-      requestAnimationFrame(tick);
-      mesh.rotation.y += 0.0008;
-      mesh.rotation.x += 0.0004;
-      camera.rotation.x += (-mouseY * 0.0008 - camera.rotation.x) * 0.05;
-      camera.rotation.y += (-mouseX * 0.0008 - camera.rotation.y) * 0.05;
-      renderer.render(scene, camera);
-    };
-    tick();
-
-    const onResize = () => {
-      const s = getSize();
-      camera.aspect = s.w / s.h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(s.w, s.h, false);
-    };
-    window.addEventListener('resize', onResize);
-
-    return () => {
-      running = false;
-      window.removeEventListener('resize', onResize);
-      document.removeEventListener('mousemove', onMove);
-      geometry.dispose(); material.dispose(); renderer.dispose();
-    };
-  }, []);
-  return <canvas ref={canvasRef} className="hero-mesh-canvas" aria-hidden="true"></canvas>;
-}
-
 function Hero({ onCTA }) {
   return (
     <section className="hero" data-screen-label="01 Hero">
-      <HeroMeshCanvas />
-      <div className="hero-mesh-fade"></div>
       <div className="hero-grid"></div>
       <div className="hero-accent-line"></div>
       <div className="wrap">
@@ -847,7 +739,7 @@ function Hero({ onCTA }) {
             <button className="btn btn-primary btn-lg btn-arrow" onClick={onCTA}>
               Book a system audit
             </button>
-            <button className="btn btn-outline btn-lg" onClick={() => scrollToSection("how-it-works")}>
+            <button className="btn btn-outline btn-lg" onClick={() => scrollTo("how-it-works")}>
               See how it works
             </button>
           </div>
@@ -1200,33 +1092,33 @@ function CaseStudies() {
   const cases = [
     {
       index: "01",
-      tag: "Practice management · Wellness clinic",
-      imgLabel: "Booking platform — admin dashboard",
-      imgIcon: "calendar-check",
-      problem: "A holistic wellness clinic was juggling client bookings, intake medical histories, deposit payments, and reminder messages across four different tools. Confirmations were sent by hand. No-shows were eating into revenue, and the owner could never see at a glance what the week ahead actually looked like.",
-      built: "A complete practice management platform — public booking site, admin calendar, client records with full medical history, Square-backed deposits, and an automated reminder ladder by SMS and email at 24h, 12h, 6h, 2h, 1h, and 15 minutes before each appointment. QuickBooks invoicing and Outlook calendar sync are built in.",
-      highlights: "Public booking site with deposit-backed appointments, automated SMS and email reminder ladder down to 15 minutes before, full client medical history and treatment notes, drag-and-drop email template builder with merge tags, Outlook calendar sync, and QuickBooks invoicing — all from a single admin screen.",
-      href: "case-studies/blue-horizon.html"
+      tag: "Operations · Window & Glazing",
+      imgLabel: "Operations platform — interface overview",
+      imgIcon: "layout-dashboard",
+      problem: "A window installation company was managing jobs, quotes, and engineer schedules across three different tools and a shared spreadsheet. Jobs were getting lost between systems. Engineers regularly arrived at sites without the right information.",
+      built: "A custom operations platform — built specifically around their workflow — that handles quoting, job scheduling, engineer allocation, customer communication, and completion sign-off in one place.",
+      result: "The operations team went from spending most of their day on coordination to running the same volume from a single screen. No jobs lost. Engineers always fully briefed before they leave.",
+      href: "case-studies/window-company.html"
     },
     {
       index: "02",
-      tag: "CRM · Gambling-harm charity",
-      imgLabel: "Casework platform — recovery dashboard",
-      imgIcon: "heart-handshake",
-      problem: "A gambling-harm charity was running two very different operations — prevention workshops in schools and colleges, and one-to-one recovery coaching for people in active treatment — out of spreadsheets and shared inboxes. Funder reporting meant pulling numbers together by hand. Risk and progress data on recovery clients lived in people's heads.",
-      built: "A purpose-built CRM split cleanly between Prevention and Recovery: a kanban for workshop pipelines, structured recovery-seeker records with intake, risk rating, triggers, session notes and progress over time, dual-stream invoicing, Microsoft Graph email and calendar sync, and a survey builder for pre/post workshop feedback that flows straight into the case record.",
-      highlights: "Workshop kanban with capacity tracking, recovery-seeker case records with risk rating and progress logging, dual-stream Prevention/Recovery invoicing with PDF generation, Microsoft 365 email and calendar sync with timeline views, public survey links that feed straight into the case record, and role-based access for prevention, recovery, and admin staff.",
-      href: "case-studies/against-the-odds.html"
+      tag: "CRM · Professional Services",
+      imgLabel: "CRM pipeline — dashboard overview",
+      imgIcon: "bar-chart-2",
+      problem: "A growing consultancy was tracking leads in a shared inbox and following up from memory. Deals were slipping through. Nobody could tell at a glance which opportunities were live, who owned them, or when they'd last been contacted.",
+      built: "A custom CRM designed precisely around their sales process — from lead capture on the website, through pipeline stages, to automated follow-ups and a live view of every active opportunity and its history.",
+      result: "Every lead is now tracked from first contact to close. Follow-ups happen automatically based on client behaviour. The team spends their time on conversations, not on working out what to do next.",
+      href: "case-studies/crm-build.html"
     },
     {
       index: "03",
-      tag: "Commerce + CRM · Industrial laser fabrication",
-      imgLabel: "Order pipeline — operations view",
-      imgIcon: "zap",
-      problem: "An industrial laser-cutting business was running a public store, a contact database, post-sale review chasing, and email and SMS marketing across four disconnected tools. Orders needed manual handoff between systems. Review requests went out late or not at all. Stock levels and Stripe payments lived in different places.",
-      built: "A single platform combining storefront, CRM, and marketing automation — Stripe-backed checkout with automatic inventory deduction, a contact database with CSV import and tagging, a multi-step review-request workflow with configurable follow-ups, email and SMS template builders with merge tags, open and click tracking, and a Twilio-backed SMS credit system. Edge functions handle webhooks, refunds, review queueing, and analytics end-to-end.",
-      highlights: "Stripe checkout with automatic inventory deduction and refund handling, contact CRM with CSV import and tagging, automated review-request workflow with configurable follow-ups that stop on click, email and SMS template builders with merge tags and open/click tracking, gift-card visual builder, and a Twilio-backed SMS credit system.",
-      href: "case-studies/isobex.html"
+      tag: "Website + Automation · Product Business",
+      imgLabel: "Website — product page design",
+      imgIcon: "globe",
+      problem: "A product business had a website that no longer reflected the quality of what they sold, and no connection between their site, stock levels, and fulfilment process. Every order required manual processing across multiple tools.",
+      built: "A new performance website integrated directly with their inventory and fulfilment systems. Orders flow through automatically. Stock updates in real time. The whole process runs without manual intervention.",
+      result: "Order processing is now near-instant. The website converts at a meaningfully higher rate. The team handles greater volume without additional resource.",
+      href: "case-studies/website-automation.html"
     },
   ];
   return (
@@ -1259,8 +1151,8 @@ function CaseStudies() {
                 <p className="cs-text">{c.built}</p>
               </div>
               <div className="cs-row">
-                <div className="cs-label cs-label-result">Highlights</div>
-                <p className="cs-text cs-text-result">{c.highlights}</p>
+                <div className="cs-label cs-label-result">Result</div>
+                <p className="cs-text cs-text-result">{c.result}</p>
               </div>
               <a href={c.href} className="cs-link">Read the full case study</a>
             </div>
@@ -1326,18 +1218,18 @@ function Footer({ onCTA }) {
           <div className="footer-col">
             <h5>What we build</h5>
             <ul>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Custom websites</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>CRM systems</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Mobile apps</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Automation</a></li>
+              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollTo("what-we-build"); }}>Custom websites</a></li>
+              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollTo("what-we-build"); }}>CRM systems</a></li>
+              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollTo("what-we-build"); }}>Mobile apps</a></li>
+              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollTo("what-we-build"); }}>Automation</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Work</h5>
             <ul>
-              <li><a href="#case-studies" onClick={e => { e.preventDefault(); scrollToSection("case-studies"); }}>Case studies</a></li>
-              <li><a href="#how-it-works" onClick={e => { e.preventDefault(); scrollToSection("how-it-works"); }}>Our process</a></li>
-              <li><a href="#problems" onClick={e => { e.preventDefault(); scrollToSection("problems"); }}>Problems we fix</a></li>
+              <li><a href="#case-studies" onClick={e => { e.preventDefault(); scrollTo("case-studies"); }}>Case studies</a></li>
+              <li><a href="#how-it-works" onClick={e => { e.preventDefault(); scrollTo("how-it-works"); }}>Our process</a></li>
+              <li><a href="#problems" onClick={e => { e.preventDefault(); scrollTo("problems"); }}>Problems we fix</a></li>
             </ul>
           </div>
           <div className="footer-col">

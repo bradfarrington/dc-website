@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Nav & tabs</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.nav {
+  background: #fff; border: 1px solid #EAEAEA; border-radius: 10px;
+  padding: 12px 16px; display: flex; align-items: center; gap: 22px;
+}
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand img { height: 18px; }
+.brand .nm { font-family: var(--font-display); font-size: 16px; letter-spacing: -0.02em; }
+.links { display: flex; gap: 18px; margin-left: 12px; }
+.links a { font: 500 13px/1 var(--font-body); color: var(--fg-2); text-decoration: none; }
+.links a.active { color: #0A0A0A; position: relative; }
+.links a.active::after { content:""; position: absolute; left: 0; right: 0; bottom: -16px; height: 2px; background: #3B82F6; box-shadow: 0 0 8px rgba(96,165,250,.6); }
+.spacer { flex: 1; }
+.cta { font: 500 12px/1 var(--font-body); padding: 8px 12px; border-radius: 8px; background: #000; color: #fff; border: 0; }
+
+.tabs { margin-top: 14px; display: flex; gap: 0; border-bottom: 1px solid #EAEAEA; }
+.tab { font: 500 13px/1 var(--font-body); padding: 12px 14px; color: var(--fg-3); position: relative; cursor: pointer; }
+.tab.active { color: #0A0A0A; }
+.tab.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: #3B82F6; }
+</style>
+</head><body>
+<div class="card">
+  <div class="nav">
+    <div class="brand"><img src="../assets/logo-mark-black.png" alt=""><div class="nm">digital craft</div></div>
+    <div class="links">
+      <a href="#" class="active">Work</a>
+      <a href="#">Services</a>
+      <a href="#">Process</a>
+      <a href="#">Journal</a>
+    </div>
+    <div class="spacer"></div>
+    <button class="cta">Book audit</button>
+  </div>
+  <div class="tabs">
+    <div class="tab active">Overview</div>
+    <div class="tab">Pipeline</div>
+    <div class="tab">Automations</div>
+    <div class="tab">Settings</div>
+  </div>
+</div>
+</body></html>

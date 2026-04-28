@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Iconography</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.split { display: grid; grid-template-columns: 1fr 1.1fr; gap: 18px; }
+.icons { background: #fff; border: 1px solid #EAEAEA; border-radius: 10px; padding: 18px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px 8px; align-items: center; justify-items: center; }
+.icons i, .icons svg { color: #0A0A0A; }
+.notes { padding: 6px 0; }
+.notes h4 { font-family: var(--font-display); font-size: 18px; letter-spacing: -0.015em; color: var(--fg-1); margin-bottom: 6px; }
+.notes ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.notes li { font: 400 12.5px/1.4 var(--font-body); color: var(--fg-2); display: flex; gap: 8px; }
+.notes li::before { content: "—"; color: var(--fg-3); }
+.cap { font-family: var(--font-mono); font-size: 10.5px; color: var(--fg-3); display:block; margin-top: 8px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="split">
+    <div>
+      <div class="icons" id="icons">
+        <i data-lucide="arrow-right"></i>
+        <i data-lucide="zap"></i>
+        <i data-lucide="workflow"></i>
+        <i data-lucide="git-branch"></i>
+        <i data-lucide="database"></i>
+        <i data-lucide="check"></i>
+        <i data-lucide="settings-2"></i>
+        <i data-lucide="layers"></i>
+        <i data-lucide="users"></i>
+        <i data-lucide="bar-chart-3"></i>
+        <i data-lucide="terminal"></i>
+        <i data-lucide="sparkles"></i>
+      </div>
+      <span class="cap">Lucide · 22px · 1.5 stroke</span>
+    </div>
+    <div class="notes">
+      <h4>Lucide, monoline, currentColor.</h4>
+      <ul>
+        <li>1.5px stroke, round caps + joins</li>
+        <li>20px UI · 24px marketing · 16px inline</li>
+        <li>Color inherits from text — never tinted independently</li>
+        <li>Functional only — no decorative icons, no emoji</li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons({ attrs: { width: 22, height: 22, 'stroke-width': 1.5 } });
+  </script>
+</div>
+</body></html>

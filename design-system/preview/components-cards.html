@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Cards</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.dc-card {
+  background: #fff; border: 1px solid #EAEAEA; border-radius: 12px;
+  padding: 20px;
+  transition: border-color 220ms cubic-bezier(.2,.8,.2,1);
+}
+.dc-card.hover { border-color: #0A0A0A; }
+.eyebrow { font: 500 11px/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 12px; }
+.h { font-family: var(--font-display); font-size: 22px; line-height: 1.15; letter-spacing: -0.02em; color: var(--fg-1); }
+.b { font-size: 13.5px; line-height: 1.5; color: var(--fg-2); margin-top: 8px; }
+.foot { display: flex; align-items: center; gap: 8px; margin-top: 14px; font: 500 12px/1 var(--font-body); color: #3B82F6; }
+.foot .line { width: 18px; height: 1px; background: #3B82F6; }
+.dc-card.hover .foot { color: #60A5FA; }
+.dc-card.hover .foot .line { background: #60A5FA; box-shadow: 0 0 6px rgba(96,165,250,.6); width: 26px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="row">
+    <div class="dc-card">
+      <div class="eyebrow">CRM SYSTEMS</div>
+      <div class="h">One source of truth for every lead.</div>
+      <div class="b">Replace spreadsheets and inboxes with a system that routes, scores, and assigns automatically.</div>
+      <div class="foot">Read more <span class="line"></span></div>
+    </div>
+    <div class="dc-card hover">
+      <div class="eyebrow">HOVER STATE</div>
+      <div class="h">Border darkens. Connector extends.</div>
+      <div class="b">No shadow lift, no scale. Motion stays inside the line.</div>
+      <div class="foot">Read more <span class="line"></span></div>
+    </div>
+  </div>
+</div>
+</body></html>

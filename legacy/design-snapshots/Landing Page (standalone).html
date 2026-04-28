@@ -6,8 +6,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="assets/logo-mark-black.png">
 <link rel="stylesheet" href="colors_and_type.css">
+<meta name="ext-resource-dependency" content="assets/logo-wordmark-black.png" data-resource-id="logoWordmarkBlack" />
+<meta name="ext-resource-dependency" content="assets/logo-wordmark-white.png" data-resource-id="logoWordmarkWhite" />
+<template id="__bundler_thumbnail" data-bg-color="#000000">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#000"/>
+    <!-- grid lines -->
+    <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
+      <line x1="0" y1="133" x2="1200" y2="133"/>
+      <line x1="0" y1="266" x2="1200" y2="266"/>
+      <line x1="0" y1="400" x2="1200" y2="400"/>
+      <line x1="0" y1="533" x2="1200" y2="533"/>
+      <line x1="0" y1="666" x2="1200" y2="666"/>
+      <line x1="200" y1="0" x2="200" y2="800"/>
+      <line x1="400" y1="0" x2="400" y2="800"/>
+      <line x1="600" y1="0" x2="600" y2="800"/>
+      <line x1="800" y1="0" x2="800" y2="800"/>
+      <line x1="1000" y1="0" x2="1000" y2="800"/>
+    </g>
+    <!-- DC mark - parallelogram grid motif -->
+    <g transform="translate(520, 300)">
+      <rect x="0" y="0" width="44" height="44" rx="6" fill="#3B82F6" opacity="0.9"/>
+      <rect x="54" y="0" width="44" height="44" rx="6" fill="#3B82F6" opacity="0.6"/>
+      <rect x="27" y="54" width="44" height="44" rx="6" fill="#3B82F6" opacity="0.6"/>
+      <rect x="81" y="54" width="44" height="44" rx="6" fill="#3B82F6" opacity="0.3"/>
+    </g>
+    <!-- headline placeholder bars -->
+    <rect x="120" y="200" width="500" height="28" rx="4" fill="rgba(255,255,255,0.12)"/>
+    <rect x="120" y="244" width="420" height="28" rx="4" fill="rgba(255,255,255,0.12)"/>
+    <rect x="120" y="288" width="340" height="28" rx="4" fill="rgba(255,255,255,0.08)"/>
+    <!-- CTA button -->
+    <rect x="120" y="348" width="180" height="44" rx="8" fill="#3B82F6"/>
+  </svg>
+</template>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
@@ -100,7 +132,7 @@ img { display: block; max-width: 100%; }
   display: flex; align-items: center; gap: 0; height: 68px;
 }
 .nav-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-right: 40px; }
-.nav-brand img { height: 34px; }
+.nav-brand img { height: 22px; }
 .nav-brand span { font-family: var(--font-display); font-size: 19px; letter-spacing: -0.025em; color: var(--dc-black); }
 .nav-links { display: flex; gap: 6px; flex: 1; }
 .nav-links a {
@@ -146,29 +178,13 @@ img { display: block; max-width: 100%; }
   background-size: 72px 72px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 100%);
-  z-index: 1;
-}
-.hero-mesh-canvas {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.85;
-}
-.hero-mesh-fade {
-  position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 40%, transparent 0%, rgba(0,0,0,0.55) 90%),
-    linear-gradient(to bottom, transparent 60%, var(--dc-black));
-  z-index: 1;
 }
 .hero-accent-line {
   position: absolute; top: 0; left: 50%; width: 1px; height: 100%;
   background: linear-gradient(to bottom, transparent, var(--dc-accent) 40%, transparent);
   opacity: 0.18; pointer-events: none;
-  z-index: 2;
 }
-.hero-content { position: relative; max-width: 960px; z-index: 2; }
+.hero-content { position: relative; max-width: 960px; }
 .hero-eyebrow { margin-bottom: 28px; }
 .hero h1 {
   font-family: var(--font-display);
@@ -485,7 +501,7 @@ img { display: block; max-width: 100%; }
   display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 40px;
   padding-bottom: 64px; border-bottom: 1px solid var(--dc-graphite);
 }
-.footer-brand img { height: 40px; }
+.footer-brand img { height: 22px; }
 .footer-brand p {
   font-size: 14px; color: var(--dc-stone); line-height: 1.6;
   max-width: 260px; margin-top: 16px;
@@ -561,65 +577,6 @@ img { display: block; max-width: 100%; }
 .toast-dot { width: 8px; height: 8px; border-radius: 99px; background: var(--dc-accent); box-shadow: 0 0 8px rgba(96,165,250,.8); }
 
 /* ============================
-   CASE STUDIES
-   ============================ */
-.cs-card-img {
-  width: 100%; aspect-ratio: 16/7; border-radius: var(--r-md);
-  background: var(--dc-ink); border: 1px solid var(--dc-fog);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px; position: relative; overflow: hidden; margin-bottom: 28px;
-}
-.cs-card-img-grid {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image: linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px);
-  background-size: 36px 36px;
-}
-.cs-card-img-dot {
-  width: 36px; height: 36px; border-radius: 99px;
-  border: 1px solid var(--dc-graphite);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; z-index: 1;
-}
-.cs-card-img-label {
-  font-family: var(--font-mono); font-size: 10px; color: var(--dc-slate);
-  letter-spacing: 0.12em; text-transform: uppercase; position: relative; z-index: 1;
-}
-
-.cs-grid {
-  display: flex; flex-direction: column; gap: 0; margin-top: 56px;
-  border: 1px solid var(--dc-fog); border-radius: var(--r-lg); overflow: hidden;
-}
-.cs-card {
-  padding: 40px; border-bottom: 1px solid var(--dc-fog);
-  background: var(--dc-white);
-  transition: background var(--dur-base) var(--ease-out);
-}
-.cs-card:last-child { border-bottom: none; }
-.cs-card:hover { background: #fafafa; }
-.cs-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-.cs-index { font-family: var(--font-mono); font-size: 11px; color: var(--dc-accent); letter-spacing: 0.08em; }
-.cs-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dc-slate); }
-.cs-row {
-  display: grid; grid-template-columns: 160px 1fr; gap: 24px;
-  padding: 18px 0; border-top: 1px solid var(--dc-fog);
-}
-.cs-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dc-stone); padding-top: 3px; }
-.cs-label-result { color: var(--dc-accent); }
-.cs-text { font-size: 15px; line-height: 1.65; color: var(--dc-charcoal); }
-.cs-text-result { color: var(--dc-black); font-weight: 500; }
-.cs-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 500; color: var(--dc-accent);
-  margin-top: 22px;
-}
-.cs-link::after {
-  content: ""; width: 18px; height: 1px; background: var(--dc-accent);
-  transition: width var(--dur-base) var(--ease-out);
-}
-.cs-card:hover .cs-link::after { width: 28px; box-shadow: 0 0 6px rgba(96,165,250,.5); }
-
-/* ============================
    RESPONSIVE
    ============================ */
 @media (max-width: 900px) {
@@ -651,7 +608,6 @@ img { display: block; max-width: 100%; }
   .how-step:last-child { border-bottom: none; }
   .footer-row { grid-template-columns: 1fr; }
   .hero-metric-row { gap: 28px; }
-  .cs-row { grid-template-columns: 1fr; gap: 6px; }
   .cap-strip-items { gap: 20px; }
 }
 @media (max-width: 480px) {
@@ -668,14 +624,6 @@ img { display: block; max-width: 100%; }
 
 <script type="text/babel">
 const { useState, useEffect, useRef } = React;
-
-/* ─── Scroll helper ───────────────────────────────────────── */
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - 80;
-  window.scrollTo({ top, behavior: "smooth" });
-}
 
 /* ─── Icon helper ─────────────────────────────────────────── */
 function Icon({ name, size = 20, strokeWidth = 1.5 }) {
@@ -696,27 +644,19 @@ function Icon({ name, size = 20, strokeWidth = 1.5 }) {
 /* ─── Nav ─────────────────────────────────────────────────── */
 function Nav({ onCTA }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navLinks = [
-    { label: "What we build", id: "what-we-build" },
-    { label: "Problems we fix", id: "problems" },
-    { label: "How it works", id: "how-it-works" },
-    { label: "Case studies", id: "case-studies" },
-  ];
-  const handleNav = (id) => { setMenuOpen(false); scrollToSection(id); };
+  const links = ["Work", "Services", "Process", "About"];
   return (
     <>
       <nav className="nav">
         <div className="wrap nav-inner">
-          <a href="#" className="nav-brand" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-            <img src="assets/logo-wordmark-black.png" alt="Digital Craft" />
+          <a href="#" className="nav-brand">
+            <img src={window.__resources?.logoWordmarkBlack || "assets/logo-wordmark-black.png"} alt="Digital Craft" />
           </a>
           <div className="nav-links">
-            {navLinks.map(l => (
-              <a key={l.id} href={"#" + l.id} onClick={e => { e.preventDefault(); scrollToSection(l.id); }}>{l.label}</a>
-            ))}
+            {links.map(l => <a key={l} href="#">{l}</a>)}
           </div>
           <div className="nav-actions">
-            <button className="btn btn-ghost" onClick={onCTA} style={{ fontSize: 14, padding: "7px 14px" }}>Contact</button>
+            <a href="#" style={{ fontSize: 14, fontWeight: 500, color: "var(--dc-slate)", padding: "7px 12px" }}>Contact</a>
             <button className="btn btn-primary btn-arrow" onClick={onCTA}>Book a system audit</button>
           </div>
           <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
@@ -725,9 +665,8 @@ function Nav({ onCTA }) {
         </div>
       </nav>
       <div className={"mobile-menu" + (menuOpen ? " open" : "")}>
-        {navLinks.map(l => (
-          <a key={l.id} href={"#" + l.id} onClick={e => { e.preventDefault(); handleNav(l.id); }}>{l.label}</a>
-        ))}
+        {links.map(l => <a key={l} href="#" onClick={() => setMenuOpen(false)}>{l}</a>)}
+        <a href="#" onClick={() => setMenuOpen(false)}>Contact</a>
         <div className="mobile-menu-cta">
           <button className="btn btn-primary btn-arrow" style={{ width: "100%", justifyContent: "center" }}
             onClick={() => { setMenuOpen(false); onCTA(); }}>
@@ -740,129 +679,39 @@ function Nav({ onCTA }) {
 }
 
 /* ─── Hero ────────────────────────────────────────────────── */
-function HeroMeshCanvas() {
-  const canvasRef = useRef(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !window.THREE) return;
-    const THREE = window.THREE;
-
-    const hero = canvas.parentElement;
-    const getSize = () => ({
-      w: hero.clientWidth || window.innerWidth,
-      h: hero.clientHeight || window.innerHeight,
-    });
-
-    const scene = new THREE.Scene();
-    let { w, h } = getSize();
-    const camera = new THREE.PerspectiveCamera(60, w / h, 1, 3000);
-    camera.position.set(0, 0, 0);
-
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(w, h, false);
-
-    const particleCount = 4000;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-    const colorAccent = new THREE.Color(0xa78bfa);
-    const colorWhite = new THREE.Color(0xffffff);
-
-    for (let i = 0; i < particleCount; i++) {
-      const r = 100 + 1200 * Math.random();
-      const theta = 2 * Math.PI * Math.random();
-      const phi = Math.acos(2 * Math.random() - 1);
-      positions[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
-      positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      positions[i * 3 + 2] = r * Math.cos(phi);
-      const mix = Math.random();
-      const c = mix > 0.5 ? colorAccent : colorWhite;
-      colors[i * 3] = c.r; colors[i * 3 + 1] = c.g; colors[i * 3 + 2] = c.b;
-    }
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
-
-    const material = new THREE.PointsMaterial({
-      size: 1.2, vertexColors: true, transparent: true,
-      opacity: 0.9, blending: THREE.AdditiveBlending,
-    });
-    const mesh = new THREE.Points(geometry, material);
-    scene.add(mesh);
-
-    let mouseX = 0, mouseY = 0;
-    const onMove = (e) => {
-      const rect = hero.getBoundingClientRect();
-      if (e.clientY < rect.top || e.clientY > rect.bottom) return;
-      mouseX = e.clientX - (rect.left + rect.width / 2);
-      mouseY = e.clientY - (rect.top + rect.height / 2);
-    };
-    document.addEventListener('mousemove', onMove);
-
-    let running = true;
-    const tick = () => {
-      if (!running) return;
-      requestAnimationFrame(tick);
-      mesh.rotation.y += 0.0008;
-      mesh.rotation.x += 0.0004;
-      camera.rotation.x += (-mouseY * 0.0008 - camera.rotation.x) * 0.05;
-      camera.rotation.y += (-mouseX * 0.0008 - camera.rotation.y) * 0.05;
-      renderer.render(scene, camera);
-    };
-    tick();
-
-    const onResize = () => {
-      const s = getSize();
-      camera.aspect = s.w / s.h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(s.w, s.h, false);
-    };
-    window.addEventListener('resize', onResize);
-
-    return () => {
-      running = false;
-      window.removeEventListener('resize', onResize);
-      document.removeEventListener('mousemove', onMove);
-      geometry.dispose(); material.dispose(); renderer.dispose();
-    };
-  }, []);
-  return <canvas ref={canvasRef} className="hero-mesh-canvas" aria-hidden="true"></canvas>;
-}
-
 function Hero({ onCTA }) {
   return (
     <section className="hero" data-screen-label="01 Hero">
-      <HeroMeshCanvas />
-      <div className="hero-mesh-fade"></div>
       <div className="hero-grid"></div>
       <div className="hero-accent-line"></div>
       <div className="wrap">
         <div className="hero-content">
-          <div className="eyebrow eyebrow-white hero-eyebrow">Custom-built · Done for you · Designed around your business</div>
+          <div className="eyebrow eyebrow-white hero-eyebrow">Systemisation · Automation · Transformation</div>
           <h1>Your business runs on<br /><em>manual work.</em><br />That ends here.</h1>
           <p className="hero-lede">
-            We build custom systems that remove manual work, connect your processes, and keep everything running smoothly behind the scenes.
+            We replace the spreadsheets, the chasing, and the guesswork with one structured system —
+            built around your team, running in the background, getting results you can measure.
           </p>
           <div className="hero-actions">
             <button className="btn btn-primary btn-lg btn-arrow" onClick={onCTA}>
               Book a system audit
             </button>
-            <button className="btn btn-outline btn-lg" onClick={() => scrollToSection("how-it-works")}>
+            <button className="btn btn-outline btn-lg" onClick={() => document.getElementById("how-it-works").scrollIntoView({ behavior: "smooth" })}>
               See how it works
             </button>
           </div>
           <div className="hero-metric-row">
             <div className="hero-metric">
-              <div className="hero-metric-num">100<span>%</span></div>
-              <div className="hero-metric-label">custom to your process</div>
+              <div className="hero-metric-num">12<span>h</span></div>
+              <div className="hero-metric-label">avg. saved per week</div>
             </div>
             <div className="hero-metric">
               <div className="hero-metric-num">3<span>wk</span></div>
-              <div className="hero-metric-label">typical project timeline</div>
+              <div className="hero-metric-label">to working system</div>
             </div>
             <div className="hero-metric">
               <div className="hero-metric-num">0</div>
-              <div className="hero-metric-label">off-the-shelf software</div>
+              <div className="hero-metric-label">manual handoffs left</div>
             </div>
           </div>
         </div>
@@ -873,9 +722,9 @@ function Hero({ onCTA }) {
 
 /* ─── Capabilities Strip ──────────────────────────────────── */
 function CapStrip() {
-  const items = ["Custom websites", "CRM systems", "Mobile apps", "Workflow automation", "Internal tools", "API integrations"];
+  const items = ["Custom websites", "CRM systems", "Mobile apps", "Workflow automation", "Internal tools", "API platforms"];
   return (
-    <div className="cap-strip" id="what-we-build">
+    <div className="cap-strip">
       <div className="wrap cap-strip-inner">
         <span className="eyebrow" style={{ flexShrink: 0 }}>What we build</span>
         <div className="cap-strip-items">
@@ -896,31 +745,31 @@ function Problem() {
   const cards = [
     {
       icon: "layers", h: "Disconnected tools, lost data",
-      p: "Your CRM doesn't talk to your website. Your invoicing doesn't talk to either. Every piece of information lives in a different place — and your team is the glue holding it together.",
-      cost: "Data re-entry that should never exist"
+      p: "Your CRM doesn't talk to your website. Your invoicing doesn't talk to either. Every piece of information lives in a different place — and your team is the glue.",
+      cost: "4+ hrs/week on data re-entry"
     },
     {
       icon: "clock", h: "Admin work that never ends",
-      p: "Chasing approvals, copy-pasting between spreadsheets, formatting reports by hand. Work that should take seconds takes hours — because there's no structure behind it.",
-      cost: "Manual processes are expensive and slow"
+      p: "Chasing approvals, copy-pasting between spreadsheets, formatting reports by hand. Work that should take seconds takes hours — because there's no system behind it.",
+      cost: "Manual = expensive = error-prone"
     },
     {
       icon: "alert-triangle", h: "Human error you can't catch",
-      p: "When a person handles every step, mistakes happen. A missed lead. A wrong figure in a report. A task that fell through because no-one knew who owned it.",
-      cost: "Uncaught errors cost time and reputation"
+      p: "When a person handles every step, mistakes happen. A missed lead. A wrong number in a report. A task that fell through because no-one knew who owned it.",
+      cost: "Avg. 23% of tasks contain errors"
     },
     {
       icon: "trending-down", h: "Growth that breaks your process",
-      p: "The approach that worked at five people falls apart at fifteen. You hired for growth but your tools didn't scale. Now you're managing people managing workarounds.",
-      cost: "Scaling chaos isn't growth"
+      p: "The system that worked at five people falls apart at fifteen. You hired for growth but your tools didn't scale. Now you're managing people managing workarounds.",
+      cost: "Scaling chaos isn't scaling"
     },
   ];
   return (
-    <section className="section" id="problems" data-screen-label="02 Problem">
+    <section className="section" data-screen-label="02 Problem">
       <div className="wrap">
-        <span className="eyebrow">Problems we fix</span>
+        <span className="eyebrow">The problem</span>
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "-0.035em", lineHeight: 1.05, margin: "16px 0 0", maxWidth: 680 }}>
-          Manual work is costing you more than you realise.
+          Manual work is costing you more than you think.
         </h2>
         <div className="problem-grid">
           {cards.map((c, i) => (
@@ -942,22 +791,22 @@ function Problem() {
   );
 }
 
-/* ─── Approach / Solution ─────────────────────────────────── */
+/* ─── System / Solution ───────────────────────────────────── */
 function System() {
   const points = [
-    { h: "We start with your process, not ours", p: "Before any design or code, we map how your business actually works — every step, every tool, every handoff. That map becomes the brief." },
-    { h: "We remove every manual step we can find", p: "Each part of your process that relies on a person doing it manually gets reviewed. Where automation makes sense, we build it. Where it doesn't, we simplify." },
-    { h: "Everything is built around your team", p: "We don't hand you a platform and hope it fits. We build the digital systems your team will actually use — shaped around how they work, not how a vendor expects them to." },
-    { h: "You own everything we build", p: "No subscriptions. No vendor lock-in. No mystery roadmaps. Every system we build is yours — fully documented, fully transferable, and built on open standards." },
+    { h: "One source of truth", p: "All your data — customers, jobs, invoices, ops — lives in one place. Owned by you. Queryable. Never locked in a third-party tool." },
+    { h: "Automated handoffs", p: "Every step that a person currently does manually gets mapped, then automated. The work happens; your team just sees the result." },
+    { h: "Built around your process", p: "We don't drop in off-the-shelf software. We design the system around how your team actually works — and then build it." },
+    { h: "Visible, measurable outcomes", p: "Hours saved, errors avoided, leads recovered. Every system ships with a baseline and a target. If it doesn't move the number, it isn't done." },
   ];
   return (
-    <section className="section section-dark" id="approach" data-screen-label="03 Approach">
+    <section className="section section-dark" data-screen-label="03 System">
       <div className="wrap">
         <div className="system-layout">
           <div>
-            <span className="eyebrow eyebrow-white">Our approach</span>
+            <span className="eyebrow eyebrow-white">The system</span>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "-0.035em", lineHeight: 1.05, margin: "16px 0 0", maxWidth: 620, color: "var(--dc-white)" }}>
-              Designed around your business. Built from the ground up.
+              One structured system. Zero manual handoffs.
             </h2>
             <div className="system-points">
               {points.map((p, i) => (
@@ -985,7 +834,7 @@ function SystemDiagram() {
     <div className="system-diagram" style={{ width: "100%" }}>
       <div className="sys-node active">
         <div className="sys-node-dot"></div>
-        <span style={{ fontFamily: "var(--font-display)", fontSize: 14, letterSpacing: "-0.01em" }}>Your custom system</span>
+        <span style={{ fontFamily: "var(--font-display)", fontSize: 14, letterSpacing: "-0.01em" }}>Digital Craft System</span>
         <div style={{ marginLeft: "auto", fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--dc-accent)", letterSpacing: "0.08em" }}>LIVE</div>
       </div>
       <div className="sys-connector active"></div>
@@ -1028,10 +877,10 @@ function SystemDiagram() {
         </div>
       </div>
       <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid var(--dc-graphite)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--dc-slate)", letterSpacing: "0.06em" }}>BUILD STATUS</span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--dc-slate)", letterSpacing: "0.06em" }}>SYSTEM STATUS</span>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--dc-accent)", letterSpacing: "0.06em", display: "flex", alignItems: "center", gap: 6 }}>
           <span style={{ width: 6, height: 6, borderRadius: "99px", background: "var(--dc-accent)", boxShadow: "0 0 8px rgba(96,165,250,.8)", display: "inline-block" }}></span>
-          YOUR PROCESSES, CONNECTED
+          ALL SYSTEMS RUNNING
         </span>
       </div>
     </div>
@@ -1044,34 +893,34 @@ function Capabilities() {
     {
       tag: "01 · CRM Systems",
       h: "Stop chasing leads in spreadsheets.",
-      p: "A CRM designed specifically for your sales process. Not an off-the-shelf tool you'll bend yourself around — a system built to match exactly how you sell and manage clients.",
-      outcomes: ["Leads captured automatically from every channel", "Follow-up sequences triggered by client behaviour", "Full pipeline visibility without manual updates"]
+      p: "A custom CRM built around your sales process — not the other way around. Every lead tracked, every follow-up automated.",
+      outcomes: ["Leads captured automatically from every channel", "Follow-up sequences that run without input", "Full pipeline visibility in one dashboard"]
     },
     {
       tag: "02 · Websites",
-      h: "A website built to do a job.",
-      p: "Not a template. Not a page builder. A custom website built for performance, built around your audience, and connected to the tools your business already uses.",
-      outcomes: ["Designed for conversion from the first page", "Integrated with your CRM, calendar, or booking flow", "You own and control it — no platform lock-in"]
+      h: "A website that works while you sleep.",
+      p: "Built for performance, conversion, and ease of management. Not a template — a system that represents your business accurately and moves people to act.",
+      outcomes: ["Conversion-optimised from day one", "Integrated with your CRM and booking systems", "You own and manage it. No locked platforms."]
     },
     {
       tag: "03 · Mobile Apps",
       h: "Put your process in your team's pocket.",
-      p: "Custom mobile applications for field teams, customers, or internal operations. Built around your actual workflow — not a generic app template with your logo on it.",
-      outcomes: ["Real-time data synced across the business", "Works offline for teams operating in the field", "Purpose-built for the people who will use it daily"]
+      p: "Custom mobile apps for field teams, clients, or internal use. Built fast, tested with real users, shipped to production.",
+      outcomes: ["Real-time data sync across the business", "Offline-capable for teams in the field", "Designed around actual workflows, not features"]
     },
     {
       tag: "04 · Automation",
-      h: "Remove the manual steps. Keep the results.",
-      p: "We identify every task your team does by hand that software could handle. Then we build the automations that take those tasks off their plate — reliably, every time.",
-      outcomes: ["Full audit of manual processes before any build", "Custom triggers, conditions, and outputs", "Runs in the background. No ongoing input required."]
+      h: "Remove every manual step you can name.",
+      p: "We map the work your team does by hand, then automate it. Notifications, approvals, reports, data sync — all handled.",
+      outcomes: ["Audit of every manual process first", "Bespoke triggers, conditions, and outputs", "Measurable hours saved from day one"]
     },
   ];
   return (
     <section className="section section-paper" data-screen-label="04 Capabilities">
       <div className="wrap">
         <span className="eyebrow">What we deliver</span>
-        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "-0.035em", lineHeight: 1.05, margin: "16px 0 0", maxWidth: 720 }}>
-          Every build is scoped to your business. Nothing is off the shelf.
+        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "-0.035em", lineHeight: 1.05, margin: "16px 0 0", maxWidth: 680 }}>
+          Every build is framed around outcomes, not features.
         </h2>
         <div className="cap-grid">
           {caps.map((c, i) => (
@@ -1096,11 +945,11 @@ function Capabilities() {
 function Transformation() {
   const rows = [
     { before: "Leads logged manually in a spreadsheet", after: "Leads captured automatically and routed to the right person" },
-    { before: "Four tools that don't talk to each other", after: "Custom integrations that connect your tools in the way that makes sense for your business" },
-    { before: "Reports built by hand every Friday afternoon", after: "Live data — updated automatically, visible when you need it" },
+    { before: "Four tools that don't talk to each other", after: "One connected system with a single source of truth" },
+    { before: "Reports built by hand every Friday afternoon", after: "Live dashboards, updated in real time, no manual input" },
     { before: "Follow-ups missed because no-one knew whose job it was", after: "Automated follow-up sequences triggered by customer action" },
-    { before: "Onboarding documented in a Google Doc no-one reads", after: "Structured digital workflow that guides every team member, every time" },
-    { before: "Growth means more admin, more headcount, more chaos", after: "Growth is handled by the system. Your team focuses on the work only they can do." },
+    { before: "Onboarding documented in a Google Doc no-one reads", after: "Structured workflow that guides every team member, every time" },
+    { before: "Growth means more admin, more headcount, more chaos", after: "Growth means the system handles more. Your team stays the same size." },
   ];
   return (
     <section className="transformation" data-screen-label="05 Transformation">
@@ -1108,7 +957,7 @@ function Transformation() {
         <div className="ba-header">
           <span className="eyebrow">Before vs. after</span>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,4.5vw,56px)", letterSpacing: "-0.035em", lineHeight: 1.05, margin: "16px auto 0", maxWidth: 700 }}>
-            Here's what changes when you have the right systems in place.
+            Here's what changes when you build the right system.
           </h2>
         </div>
         <div className="ba-grid">
@@ -1153,17 +1002,17 @@ function HowItWorks() {
     {
       icon: "search",
       h: "Analyse",
-      p: "We sit with your team and map how the business actually works today — every manual step, every tool in use, every handoff between people. That becomes the brief."
+      p: "We spend time with your team mapping the real process — every manual step, every tool, every handoff. The gaps become the brief."
     },
     {
       icon: "layout-template",
       h: "Build",
-      p: "We design the system, agree the spec, and build in two-week sprints. You see real, working software at every stage — not wireframes, not promises."
+      p: "We design the system, agree the spec, then build in two-week sprints. You see working software every fortnight — not wireframes, not promises."
     },
     {
       icon: "rocket",
       h: "Deploy",
-      p: "We hand over a live, documented system. Your team is trained. You own everything. We stay available — not on a retainer, just there when you need us."
+      p: "We hand over a running system with training, documentation, and a clear set of numbers to track. You own it completely. We're on call, not on retainer."
     },
   ];
   return (
@@ -1171,7 +1020,7 @@ function HowItWorks() {
       <div className="wrap">
         <span className="eyebrow">How it works</span>
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "-0.035em", lineHeight: 1.05, margin: "16px 0 0", maxWidth: 640 }}>
-          From first conversation to working system.
+          Three weeks to a working system.
         </h2>
         <div className="how-steps">
           {steps.map((s, i) => (
@@ -1195,97 +1044,21 @@ function HowItWorks() {
   );
 }
 
-/* ─── Case Studies ───────────────────────────────────────── */
-function CaseStudies() {
-  const cases = [
-    {
-      index: "01",
-      tag: "Practice management · Wellness clinic",
-      imgLabel: "Booking platform — admin dashboard",
-      imgIcon: "calendar-check",
-      problem: "A holistic wellness clinic was juggling client bookings, intake medical histories, deposit payments, and reminder messages across four different tools. Confirmations were sent by hand. No-shows were eating into revenue, and the owner could never see at a glance what the week ahead actually looked like.",
-      built: "A complete practice management platform — public booking site, admin calendar, client records with full medical history, Square-backed deposits, and an automated reminder ladder by SMS and email at 24h, 12h, 6h, 2h, 1h, and 15 minutes before each appointment. QuickBooks invoicing and Outlook calendar sync are built in.",
-      highlights: "Public booking site with deposit-backed appointments, automated SMS and email reminder ladder down to 15 minutes before, full client medical history and treatment notes, drag-and-drop email template builder with merge tags, Outlook calendar sync, and QuickBooks invoicing — all from a single admin screen.",
-      href: "case-studies/blue-horizon.html"
-    },
-    {
-      index: "02",
-      tag: "CRM · Gambling-harm charity",
-      imgLabel: "Casework platform — recovery dashboard",
-      imgIcon: "heart-handshake",
-      problem: "A gambling-harm charity was running two very different operations — prevention workshops in schools and colleges, and one-to-one recovery coaching for people in active treatment — out of spreadsheets and shared inboxes. Funder reporting meant pulling numbers together by hand. Risk and progress data on recovery clients lived in people's heads.",
-      built: "A purpose-built CRM split cleanly between Prevention and Recovery: a kanban for workshop pipelines, structured recovery-seeker records with intake, risk rating, triggers, session notes and progress over time, dual-stream invoicing, Microsoft Graph email and calendar sync, and a survey builder for pre/post workshop feedback that flows straight into the case record.",
-      highlights: "Workshop kanban with capacity tracking, recovery-seeker case records with risk rating and progress logging, dual-stream Prevention/Recovery invoicing with PDF generation, Microsoft 365 email and calendar sync with timeline views, public survey links that feed straight into the case record, and role-based access for prevention, recovery, and admin staff.",
-      href: "case-studies/against-the-odds.html"
-    },
-    {
-      index: "03",
-      tag: "Commerce + CRM · Industrial laser fabrication",
-      imgLabel: "Order pipeline — operations view",
-      imgIcon: "zap",
-      problem: "An industrial laser-cutting business was running a public store, a contact database, post-sale review chasing, and email and SMS marketing across four disconnected tools. Orders needed manual handoff between systems. Review requests went out late or not at all. Stock levels and Stripe payments lived in different places.",
-      built: "A single platform combining storefront, CRM, and marketing automation — Stripe-backed checkout with automatic inventory deduction, a contact database with CSV import and tagging, a multi-step review-request workflow with configurable follow-ups, email and SMS template builders with merge tags, open and click tracking, and a Twilio-backed SMS credit system. Edge functions handle webhooks, refunds, review queueing, and analytics end-to-end.",
-      highlights: "Stripe checkout with automatic inventory deduction and refund handling, contact CRM with CSV import and tagging, automated review-request workflow with configurable follow-ups that stop on click, email and SMS template builders with merge tags and open/click tracking, gift-card visual builder, and a Twilio-backed SMS credit system.",
-      href: "case-studies/isobex.html"
-    },
-  ];
-  return (
-    <section className="section" id="case-studies" data-screen-label="07 Case Studies">
-      <div className="wrap">
-        <span className="eyebrow">Case studies</span>
-        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,5vw,60px)", letterSpacing: "-0.035em", lineHeight: 1.05, margin: "16px 0 0", maxWidth: 680 }}>
-          Problems we've fixed. Systems we've built.
-        </h2>
-        <div className="cs-grid">
-          {cases.map((c, i) => (
-            <div key={i} className="cs-card">
-              <div className="cs-card-img">
-                <div className="cs-card-img-grid"></div>
-                <div className="cs-card-img-dot">
-                  <Icon name={c.imgIcon} size={16} strokeWidth={1.5} />
-                </div>
-                <span className="cs-card-img-label">{c.imgLabel}</span>
-              </div>
-              <div className="cs-card-header">
-                <span className="cs-index">{c.index}</span>
-                <span className="cs-tag">{c.tag}</span>
-              </div>
-              <div className="cs-row">
-                <div className="cs-label">Problem</div>
-                <p className="cs-text">{c.problem}</p>
-              </div>
-              <div className="cs-row">
-                <div className="cs-label">What we built</div>
-                <p className="cs-text">{c.built}</p>
-              </div>
-              <div className="cs-row">
-                <div className="cs-label cs-label-result">Highlights</div>
-                <p className="cs-text cs-text-result">{c.highlights}</p>
-              </div>
-              <a href={c.href} className="cs-link">Read the full case study</a>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ─── Testimonial ────────────────────────────────────────── */
 function Testimonial() {
   return (
-    <section className="testimonial-section" data-screen-label="08 Testimonial">
+    <section className="testimonial-section" data-screen-label="07 Testimonial">
       <div className="testimonial-bg"></div>
       <div className="wrap" style={{ position: "relative" }}>
-        <span className="eyebrow eyebrow-white">In their words</span>
+        <span className="eyebrow eyebrow-white">Field report</span>
         <p className="testimonial-quote" style={{ marginTop: 28 }}>
-          "They didn't sell us software. They sat with our team, figured out where the real problems were, and <em>built exactly what we needed</em> — nothing more, nothing less."
+          "We replaced four tools and a part-time admin role with one system. <em>The team got their afternoons back</em> — and we stopped losing leads in inboxes."
         </p>
         <div className="testimonial-attr">
           <div className="testimonial-av"></div>
           <div>
             <div className="testimonial-name">Priya Anand</div>
-            <div className="testimonial-role">Operations Director, Northway Logistics</div>
+            <div className="testimonial-role">Ops Director, Northway Logistics</div>
           </div>
         </div>
       </div>
@@ -1296,11 +1069,11 @@ function Testimonial() {
 /* ─── Final CTA ──────────────────────────────────────────── */
 function FinalCTA({ onCTA }) {
   return (
-    <section className="final-cta" data-screen-label="09 Final CTA">
+    <section className="final-cta" data-screen-label="08 Final CTA">
       <div className="wrap">
         <div className="cta-band">
           <div className="cta-band-grid"></div>
-          <h2>Tell us what's not working. We'll show you <em>what to build.</em></h2>
+          <h2>The future state should feel <em>obvious</em>. Let's draw it together.</h2>
           <div className="cta-band-actions">
             <button className="btn btn-primary btn-lg btn-arrow" onClick={onCTA}>
               Book a system audit
@@ -1314,44 +1087,46 @@ function FinalCTA({ onCTA }) {
 }
 
 /* ─── Footer ─────────────────────────────────────────────── */
-function Footer({ onCTA }) {
+function Footer() {
   return (
-    <footer className="footer" data-screen-label="10 Footer">
+    <footer className="footer" data-screen-label="09 Footer">
       <div className="wrap">
         <div className="footer-row">
           <div className="footer-brand">
-            <img src="assets/logo-wordmark-white.png" alt="Digital Craft" />
-            <p>We build custom digital systems that remove manual work and help businesses operate better.</p>
+            <img src={window.__resources?.logoWordmarkWhite || "assets/logo-wordmark-white.png"} alt="Digital Craft" />
+            <p>Bespoke systems that turn messy, time-consuming processes into smart, automated ones.</p>
           </div>
           <div className="footer-col">
-            <h5>What we build</h5>
+            <h5>Services</h5>
             <ul>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Custom websites</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>CRM systems</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Mobile apps</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Automation</a></li>
+              <li><a href="#">Custom websites</a></li>
+              <li><a href="#">CRM systems</a></li>
+              <li><a href="#">Mobile apps</a></li>
+              <li><a href="#">Automation</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Work</h5>
             <ul>
-              <li><a href="#case-studies" onClick={e => { e.preventDefault(); scrollToSection("case-studies"); }}>Case studies</a></li>
-              <li><a href="#how-it-works" onClick={e => { e.preventDefault(); scrollToSection("how-it-works"); }}>Our process</a></li>
-              <li><a href="#problems" onClick={e => { e.preventDefault(); scrollToSection("problems"); }}>Problems we fix</a></li>
+              <li><a href="#">Case studies</a></li>
+              <li><a href="#">Industries</a></li>
+              <li><a href="#">Process</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Company</h5>
             <ul>
-              <li><a href="mailto:hello@thedigicraft.co.uk">Contact us</a></li>
-              <li><button onClick={onCTA} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 14, color: "var(--dc-mist)", padding: 0, fontFamily: "inherit", textAlign: "left" }}>Book a system audit</button></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Journal</a></li>
+              <li><a href="#">Contact</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Connect</h5>
             <ul>
-              <li><a href="mailto:hello@thedigicraft.co.uk">hello@thedigicraft.co.uk</a></li>
-              <li><a href="https://www.linkedin.com/company/thedigicraft" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="#">hello@thedigicraft.co.uk</a></li>
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">GitHub</a></li>
             </ul>
           </div>
         </div>
@@ -1374,7 +1149,7 @@ function Modal({ open, onClose, onSubmit }) {
       <div className="modal" onClick={e => e.stopPropagation()}>
         <div className="modal-eyebrow"><span className="eyebrow">System audit</span></div>
         <h3>Tell us what's broken.</h3>
-        <p className="modal-sub">30 minutes. We'll map the messiest part of your operation and show you what to build first. No sales deck. No obligation.</p>
+        <p className="modal-sub">30 minutes. We'll map the messiest part of your operation and show you the shortest path to fix it. No sales deck.</p>
         <div className="modal-field"><label>Name</label><input className="modal-input" value={form.name} onChange={set("name")} placeholder="Alex Mason" /></div>
         <div className="modal-field"><label>Work email</label><input className="modal-input" value={form.email} onChange={set("email")} placeholder="alex@company.com" /></div>
         <div className="modal-field"><label>Company</label><input className="modal-input" value={form.company} onChange={set("company")} placeholder="Northway Logistics" /></div>
@@ -1408,7 +1183,7 @@ function App() {
   const openCTA = () => setModalOpen(true);
   const submitAudit = () => {
     setModalOpen(false);
-    setToast({ show: true, msg: "Request received — we'll be in touch within 24 hours." });
+    setToast({ show: true, msg: "Audit request received — we'll be in touch within 24 hours." });
     setTimeout(() => setToast(t => ({ ...t, show: false })), 4500);
   };
 
@@ -1422,10 +1197,9 @@ function App() {
       <Capabilities />
       <Transformation />
       <HowItWorks />
-      <CaseStudies />
       <Testimonial />
       <FinalCTA onCTA={openCTA} />
-      <Footer onCTA={openCTA} />
+      <Footer />
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={submitAudit} />
       <Toast show={toast.show} message={toast.msg} />
     </>
@@ -1435,6 +1209,7 @@ function App() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 
+/* Tweaks protocol */
 window.addEventListener("message", e => {
   if (e.data?.type === "__activate_edit_mode") document.getElementById("tweaks-panel")?.classList.remove("tweaks-hidden");
   if (e.data?.type === "__deactivate_edit_mode") document.getElementById("tweaks-panel")?.classList.add("tweaks-hidden");

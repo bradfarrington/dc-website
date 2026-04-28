@@ -1,0 +1,55 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Accent — flow & connectors</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.stage { background: #000; border-radius: 10px; padding: 28px 24px; color:#fff; position:relative; overflow:hidden; }
+.stage::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.flow { position: relative; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; align-items: center; }
+.node {
+  position: relative; z-index: 2;
+  border: 1px solid #2A2A2A; background: #0A0A0A;
+  border-radius: 8px; padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.node.active { border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(96,165,250,.18), 0 0 18px rgba(96,165,250,.25); }
+.node .lab { font: 500 10px/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: #6B6B6B; }
+.node.active .lab { color: #60A5FA; }
+.node .nm { font-family: var(--font-display); font-size: 16px; letter-spacing: -0.01em; }
+.line { position: relative; height: 1px; margin: 0 -1px; }
+.line::before {
+  content:""; position: absolute; left: 0; right: 0; top: 50%;
+  height: 1px; background: #2A2A2A;
+}
+.line.live::before { background: linear-gradient(90deg, #3B82F6, #60A5FA); box-shadow: 0 0 8px rgba(96,165,250,.55); }
+.line .pulse {
+  position:absolute; top: 50%; transform: translate(-50%, -50%);
+  width: 8px; height: 8px; border-radius: 99px; background: #60A5FA;
+  box-shadow: 0 0 0 4px rgba(96,165,250,.25), 0 0 12px rgba(96,165,250,.7);
+  animation: pulse 2.4s var(--ease-out, cubic-bezier(.2,.8,.2,1)) infinite;
+}
+@keyframes pulse { 0% { left: 0%; opacity: 0;} 12% { opacity: 1;} 88% { opacity: 1;} 100% { left: 100%; opacity: 0;} }
+.note { color:#A3A3A3; font-size: 11px; margin-top: 14px; position:relative; }
+</style>
+</head><body>
+<div class="card">
+  <div class="stage">
+    <div class="flow">
+      <div class="node"><div class="lab">01 · Form</div><div class="nm">Lead in</div></div>
+      <div class="line live"><div class="pulse"></div></div>
+      <div class="node active"><div class="lab">02 · Route</div><div class="nm">Enrich + score</div></div>
+      <div class="line"><span></span></div>
+      <div class="node"><div class="lab">03 · CRM</div><div class="nm">Assigned</div></div>
+    </div>
+    <div class="note">Accent flows along thin connectors — never fills the canvas.</div>
+  </div>
+</div>
+</body></html>

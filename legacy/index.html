@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elite Team | Sequence Event</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  
+  <!-- Global Flash Overlay for explosive transition -->
+  <div class="flash-overlay" id="flash-overlay"></div>
+
+  <!-- PHASE 1: LANDING — EPIC ACTIVATE BUTTON -->
+  <section class="section-landing" id="section-landing">
+    <div class="landing-content">
+
+      <!-- Top brand pill -->
+      <div class="landing-top">
+        <div class="brand-pill">Digital Craft</div>
+      </div>
+
+      <!-- Center: The Button -->
+      <div class="landing-center">
+        <button class="activate-btn" id="activate-btn" aria-label="Activate">
+          <!-- Outer orbiting rings -->
+          <div class="orbit-ring orbit-ring-1"></div>
+          <div class="orbit-ring orbit-ring-2"></div>
+          <div class="orbit-ring orbit-ring-3"></div>
+          <!-- Glow pulse layer -->
+          <div class="btn-glow-pulse"></div>
+          <!-- Main circle -->
+          <div class="btn-core">
+            <!-- Upward graph SVG icon -->
+            <svg class="graph-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="8,52 22,36 34,42 56,12" stroke="url(#graphGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polygon points="56,12 56,26 42,12" fill="url(#graphGrad)" opacity="0.9"/>
+              <defs>
+                <linearGradient id="graphGrad" x1="8" y1="52" x2="56" y2="12">
+                  <stop offset="0%" stop-color="#a78bfa"/>
+                  <stop offset="100%" stop-color="#ffffff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <!-- Bottom: Headline + subtext -->
+      <div class="landing-bottom">
+        <h1 class="landing-headline">Enhance Your Business</h1>
+        <div class="landing-sub-pill">
+          <span class="pulse-dot"></span>
+          <p class="landing-subtext">Press to see the future</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHASE 2: VIDEO STATE -->
+  <section class="section-video" id="section-video">
+    <div class="video-wrapper">
+      <video muted playsinline webkit-playsinline id="bg-video" preload="auto">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  </section>
+  <!-- PHASE 3: DYNAMIC GSAP ARRAY ITERATOR -->
+  <section class="section-interstitial" id="section-interstitial">
+    <h2 class="cinematic-text" id="cinematic-text"></h2>
+  </section>
+
+  <!-- PHASE 4: FINAL HYPER-MINIMAL HERO -->
+  <section class="section-final" id="section-final">
+    
+    <!-- Z-INDEX 1: LOGO (Background Layer) -->
+    <div class="layer-logo">
+      <img src="/DG - LOGO AND TEXT - WHITE - NO BG.png" alt="Digital Craft" class="final-logo">
+    </div>
+
+    <!-- Z-INDEX 2: Custom THREE.JS Neural Mesh (Seamless responsive bounds mapped to screen rendering) -->
+    <div class="layer-mesh">
+      <canvas id="webgl-canvas"></canvas>
+    </div>
+
+    <!-- Z-INDEX 3: WAITLIST (Foreground CTA Layer anchored dead center) -->
+    <div class="glass-content">
+      <h2 class="final-heading">Outpace The Competition.</h2>
+
+      <!-- Showcase Carousel -->
+      <div class="showcase-carousel" id="showcase-carousel">
+        <div class="carousel-row">
+          <div class="carousel-track carousel-track-left">
+            <div class="device-frame device-desktop"><img src="/previews/desktop-1.jpg" alt="Analytics Dashboard" /></div>
+            <div class="device-frame device-mobile"><img src="/previews/mobile-1.jpg" alt="Fitness App" /></div>
+            <div class="device-frame device-desktop"><img src="/previews/desktop-2.jpg" alt="CRM Platform" /></div>
+            <div class="device-frame device-mobile"><img src="/previews/mobile-2.jpg" alt="Banking App" /></div>
+            <div class="device-frame device-desktop"><img src="/previews/desktop-3.jpg" alt="Project Management" /></div>
+            <div class="device-frame device-mobile"><img src="/previews/mobile-3.jpg" alt="Food Delivery App" /></div>
+            <div class="device-frame device-desktop"><img src="/previews/desktop-4.jpg" alt="E-Commerce Admin" /></div>
+            <!-- Duplicate set for seamless loop -->
+            <div class="device-frame device-desktop"><img src="/previews/desktop-1.jpg" alt="Analytics Dashboard" /></div>
+            <div class="device-frame device-mobile"><img src="/previews/mobile-1.jpg" alt="Fitness App" /></div>
+            <div class="device-frame device-desktop"><img src="/previews/desktop-2.jpg" alt="CRM Platform" /></div>
+            <div class="device-frame device-mobile"><img src="/previews/mobile-2.jpg" alt="Banking App" /></div>
+            <div class="device-frame device-desktop"><img src="/previews/desktop-3.jpg" alt="Project Management" /></div>
+            <div class="device-frame device-mobile"><img src="/previews/mobile-3.jpg" alt="Food Delivery App" /></div>
+            <div class="device-frame device-desktop"><img src="/previews/desktop-4.jpg" alt="E-Commerce Admin" /></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="waitlist-form" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="Enter your email address" required class="email-input" aria-label="Email Address" />
+        <button type="submit" class="btn-cta">Get Early Access</button>
+      </form>
+      <p class="limitation-text">Built for a limited number of businesses.</p>
+    </div>
+
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

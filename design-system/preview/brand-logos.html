@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Logo lockups</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tile { padding: 24px; border-radius: 10px; display: flex; align-items: center; justify-content: center; min-height: 120px; }
+.tile.l { background: #fff; border: 1px solid #EAEAEA; }
+.tile.d { background: #000; }
+.tile img { max-height: 56px; max-width: 240px; }
+.tile.mark img { max-height: 64px; max-width: 88px; }
+.cap { display: block; font-family: var(--font-mono); font-size: 10.5px; color: var(--fg-3); margin-top: 6px; text-align: center; }
+.tile.d .cap { color: #6B6B6B; }
+</style>
+</head><body>
+<div class="card">
+  <div class="row">
+    <div>
+      <div class="tile l"><img src="../assets/logo-wordmark-black.png" alt="Digital Craft"></div>
+      <span class="cap">wordmark · primary lockup · on light</span>
+    </div>
+    <div>
+      <div class="tile d"><img src="../assets/logo-wordmark-white.png" alt="Digital Craft"></div>
+      <span class="cap">wordmark · on dark</span>
+    </div>
+    <div>
+      <div class="tile l mark"><img src="../assets/logo-mark-black.png" alt=""></div>
+      <span class="cap">mark · favicon · social · brand moments</span>
+    </div>
+    <div>
+      <div class="tile d mark"><img src="../assets/logo-mark-white.png" alt=""></div>
+      <span class="cap">mark · on dark</span>
+    </div>
+  </div>
+</div>
+</body></html>

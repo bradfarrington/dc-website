@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Blue Horizon Holistics — Case Study · Digital Craft</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A bespoke practice management platform built for a holistic wellness clinic — booking, deposits, medical intake, automated reminders, calendar sync, and invoicing in one screen.">
+<link rel="icon" type="image/png" href="../assets/logo-mark-black.png">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="case-study.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="../" class="nav-brand">
+      <img src="../assets/logo-wordmark-black.png" alt="Digital Craft">
+    </a>
+    <a href="../#case-studies" class="nav-back">
+      <span class="nav-back-arrow"></span>
+      All case studies
+    </a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="cs-hero">
+  <div class="cs-hero-grid"></div>
+  <div class="cs-hero-accent"></div>
+  <div class="wrap">
+    <div class="cs-hero-content">
+      <span class="eyebrow eyebrow-white cs-hero-eyebrow">Case study · 01<span class="cs-hero-tag">Practice management · Wellness clinic</span></span>
+      <h1>The whole client journey, on <em>one screen.</em></h1>
+      <p class="cs-hero-lede">A holistic wellness clinic was running bookings, deposits, intake forms, reminders, treatment notes, and invoicing across half a dozen disconnected tools. We replaced the lot with a single, bespoke platform built around how the clinic actually works.</p>
+    </div>
+    <div class="cs-meta">
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Client</span>
+        <span class="cs-meta-value">Blue Horizon Holistics</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Sector</span>
+        <span class="cs-meta-value">Wellness clinic</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Stack</span>
+        <span class="cs-meta-value">React · Supabase · Square · Twilio</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Status</span>
+        <span class="cs-meta-value">Live</span>
+      </div>
+    </div>
+    <div class="cs-image">
+      <div class="cs-image-grid"></div>
+      <div class="cs-image-placeholder">
+        <div class="cs-image-placeholder-dot"><i data-lucide="calendar-check"></i></div>
+        <span class="cs-image-placeholder-label">Booking platform — admin dashboard</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The brief -->
+<section class="section">
+  <div class="wrap">
+    <div class="cs-split">
+      <div class="cs-prose">
+        <span class="eyebrow h-eye">The brief</span>
+        <h2>A stack that had grown one tool at a time.</h2>
+        <p>Blue Horizon Holistics is an independent wellness clinic running massage and holistic therapies. Like most small practices, the owner had assembled the operations stack one tool at a time: a third-party booking widget, a separate payment processor, a calendar app, a spreadsheet for client medical histories, and a personal inbox for reminders.</p>
+        <p>The pain wasn't any one tool — it was the gaps between them. Bookings landed in one place, deposits in another. Intake forms went missing between an email signup and a paper folder. Reminders went out manually whenever there was a quiet moment, which meant they often didn't. <strong>No-shows weren't dropping</strong>, and looking at the week ahead meant flicking between three browser tabs.</p>
+        <p>The brief was specific: run the whole thing — booking, deposit, intake, reminders, treatment notes, invoicing — from a single screen, without losing the polish of the public booking experience clients see.</p>
+      </div>
+      <aside class="cs-side">
+        <h5>What they came in with</h5>
+        <ul>
+          <li>A booking widget separate from the website</li>
+          <li>Deposits processed in a second tool</li>
+          <li>Medical intake forms on paper</li>
+          <li>Reminders sent by hand from a personal inbox</li>
+          <li>Client history scattered across spreadsheets and notes apps</li>
+          <li>No single view of the week ahead</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- What we built -->
+<section class="section section-paper">
+  <div class="wrap">
+    <div class="cs-prose">
+      <span class="eyebrow h-eye">What we built</span>
+      <h2>A bespoke platform — not a generic SaaS skinned with their logo.</h2>
+      <p>The public booking site sits at the front. Clients pick a service, see real availability (with per-service slot intervals and post-appointment buffers), pay a configurable deposit through Square, and complete a medical intake before the appointment is confirmed. The flow is embeddable on the main site and matches the clinic's brand.</p>
+      <p>Behind that is the admin platform. The week ahead is one screen — appointments, statuses, deposits taken, no-shows, cancellations, revenue. Each client has a full record: contact details, medical history, every treatment note since they first booked, and every message that's been sent to them. The owner can change a service, set blackout dates, configure reminder cadence, or send a one-off campaign without touching anyone technical.</p>
+    </div>
+
+    <div class="cs-feat-grid">
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="globe" width="20" height="20"></i></div>
+        <h3>Public booking flow</h3>
+        <p>Service → date → medical intake → deposit → confirmation. Embeddable on the main site as an iframe. Per-service slot intervals and post-appointment buffers built in.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="bell-ring" width="20" height="20"></i></div>
+        <h3>Automated reminder ladder</h3>
+        <p>Email and SMS reminders fire on their own at 24h, 12h, 6h, 2h, 1h, and 15 minutes before each appointment. No-shows drop without anyone touching it.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="user-round" width="20" height="20"></i></div>
+        <h3>Client records & medical history</h3>
+        <p>Full intake — allergies, medications, conditions — plus treatment notes per session. The whole history of every client searchable from one place.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="mail" width="20" height="20"></i></div>
+        <h3>Email & SMS template builder</h3>
+        <p>Drag-and-drop MJML editor with merge tags, plus an SMS template library. Bulk campaigns to selected client groups with open and click tracking.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="calendar-sync" width="20" height="20"></i></div>
+        <h3>Outlook calendar sync</h3>
+        <p>The owner's Microsoft calendar stays in sync with the booking system, both ways. Block out personal time and the public booker respects it instantly.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="receipt" width="20" height="20"></i></div>
+        <h3>QuickBooks invoicing</h3>
+        <p>Each appointment generates an invoice in QuickBooks Online. Payment reconciliation runs automatically — no double entry, no monthly tidy-up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stack -->
+<section class="section">
+  <div class="wrap">
+    <div class="cs-prose">
+      <span class="eyebrow h-eye">How it's built</span>
+      <h2>Serverless where it counts. The clinic owns its data.</h2>
+      <p>The platform runs on Supabase for data and auth, React 19 on the front end. Reminders, calendar sync, and payments all run as Supabase edge functions — there's no separate server to maintain. Email goes out via the clinic's own SMTP credentials (so deliverability stays under their control) with MJML templates. SMS routes through Twilio. Square handles deposits and payments. Outlook sync runs on Microsoft Graph. QuickBooks Online generates invoices.</p>
+    </div>
+    <div class="cs-stack">
+      <span class="cs-stack-pill cs-stack-pill-accent">React 19</span>
+      <span class="cs-stack-pill cs-stack-pill-accent">Supabase</span>
+      <span class="cs-stack-pill">Edge Functions (Deno)</span>
+      <span class="cs-stack-pill">MJML</span>
+      <span class="cs-stack-pill">Twilio SMS</span>
+      <span class="cs-stack-pill">Square Payments</span>
+      <span class="cs-stack-pill">Microsoft Graph</span>
+      <span class="cs-stack-pill">QuickBooks Online</span>
+      <span class="cs-stack-pill">Vercel</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cs-cta-section">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="cta-band-grid"></div>
+      <h2>Got a stack like this? <em>We'll replace it.</em></h2>
+      <div class="cta-band-actions">
+        <a href="mailto:hello@thedigicraft.co.uk" class="btn btn-primary btn-lg btn-arrow">Book a system audit</a>
+        <div class="cta-note">30-minute call. No sales deck. No obligation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <img src="../assets/logo-wordmark-white.png" alt="Digital Craft">
+        <p>We build custom digital systems that remove manual work and help businesses operate better.</p>
+      </div>
+      <div class="footer-col">
+        <h5>What we build</h5>
+        <ul>
+          <li><a href="../#what-we-build">Custom websites</a></li>
+          <li><a href="../#what-we-build">CRM systems</a></li>
+          <li><a href="../#what-we-build">Mobile apps</a></li>
+          <li><a href="../#what-we-build">Automation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Work</h5>
+        <ul>
+          <li><a href="../#case-studies">Case studies</a></li>
+          <li><a href="../#how-it-works">Our process</a></li>
+          <li><a href="../#problems">Problems we fix</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="mailto:hello@thedigicraft.co.uk">Contact us</a></li>
+          <li><a href="mailto:hello@thedigicraft.co.uk">Book a system audit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:hello@thedigicraft.co.uk">hello@thedigicraft.co.uk</a></li>
+          <li><a href="https://www.linkedin.com/company/thedigicraft" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Digital Craft Ltd</span>
+      <span>Built in Britain</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (window.lucide) window.lucide.createIcons();
+</script>
+</body>
+</html>

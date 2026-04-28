@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Spacing scale</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.list { display: flex; flex-direction: column; gap: 8px; }
+.row { display: grid; grid-template-columns: 56px 56px 1fr; align-items: center; gap: 12px; height: 24px; }
+.row .nm { font-family: var(--font-mono); font-size: 11px; color: var(--fg-1); }
+.row .px { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+.bar { height: 6px; background: #0A0A0A; border-radius: 2px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="list">
+    <div class="row"><div class="nm">sp-1</div><div class="px">4</div><div class="bar" style="width:4px"></div></div>
+    <div class="row"><div class="nm">sp-2</div><div class="px">8</div><div class="bar" style="width:8px"></div></div>
+    <div class="row"><div class="nm">sp-4</div><div class="px">16</div><div class="bar" style="width:16px"></div></div>
+    <div class="row"><div class="nm">sp-6</div><div class="px">24</div><div class="bar" style="width:24px"></div></div>
+    <div class="row"><div class="nm">sp-8</div><div class="px">32</div><div class="bar" style="width:32px"></div></div>
+    <div class="row"><div class="nm">sp-12</div><div class="px">48</div><div class="bar" style="width:48px"></div></div>
+    <div class="row"><div class="nm">sp-16</div><div class="px">64</div><div class="bar" style="width:64px"></div></div>
+    <div class="row"><div class="nm">sp-24</div><div class="px">96</div><div class="bar" style="width:96px"></div></div>
+    <div class="row"><div class="nm">sp-32</div><div class="px">128</div><div class="bar" style="width:128px"></div></div>
+  </div>
+</div>
+</body></html>

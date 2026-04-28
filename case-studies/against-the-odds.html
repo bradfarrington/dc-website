@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Against The Odds — Case Study · Digital Craft</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A purpose-built CRM for a UK gambling-harm charity, splitting prevention workshops and recovery casework cleanly while sharing one data model.">
+<link rel="icon" type="image/png" href="../assets/logo-mark-black.png">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="case-study.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="../" class="nav-brand">
+      <img src="../assets/logo-wordmark-black.png" alt="Digital Craft">
+    </a>
+    <a href="../#case-studies" class="nav-back">
+      <span class="nav-back-arrow"></span>
+      All case studies
+    </a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="cs-hero">
+  <div class="cs-hero-grid"></div>
+  <div class="cs-hero-accent"></div>
+  <div class="wrap">
+    <div class="cs-hero-content">
+      <span class="eyebrow eyebrow-white cs-hero-eyebrow">Case study · 02<span class="cs-hero-tag">CRM · Gambling-harm charity</span></span>
+      <h1>Two operations, one platform — without <em>flattening</em> either.</h1>
+      <p class="cs-hero-lede">A UK gambling-harm charity was running prevention workshops in schools and one-to-one recovery coaching from spreadsheets and shared inboxes. We built a CRM that's effectively two CRMs sharing a single data model — branded as one product, split cleanly along the work that actually happens.</p>
+    </div>
+    <div class="cs-meta">
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Client</span>
+        <span class="cs-meta-value">Against The Odds</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Sector</span>
+        <span class="cs-meta-value">Gambling-harm charity (UK)</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Stack</span>
+        <span class="cs-meta-value">React · Supabase · Microsoft Graph</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Status</span>
+        <span class="cs-meta-value">Live</span>
+      </div>
+    </div>
+    <div class="cs-image">
+      <div class="cs-image-grid"></div>
+      <div class="cs-image-placeholder">
+        <div class="cs-image-placeholder-dot"><i data-lucide="heart-handshake"></i></div>
+        <span class="cs-image-placeholder-label">Casework platform — recovery dashboard</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The brief -->
+<section class="section">
+  <div class="wrap">
+    <div class="cs-split">
+      <div class="cs-prose">
+        <span class="eyebrow h-eye">The brief</span>
+        <h2>One small team. Two genuinely different jobs.</h2>
+        <p>Against The Odds runs two operations from the same small team. The Prevention side delivers workshops in schools, colleges, and partner organisations. The Recovery side supports people in active treatment — one-to-one coaching, casework, and signposting.</p>
+        <p>Both sides were running on Google Sheets, shared inboxes, and a shared calendar. <strong>Workshop pipelines lived in someone's head.</strong> Recovery client risk ratings lived in a coach's notebook. Funder reports were pulled together by hand the week before each board meeting.</p>
+        <p>As the team grew and the funded streams diversified, the cracks widened. The brief was for one platform that could run both operations side by side — without flattening them into the same workflow, because they're genuinely different jobs serving genuinely different people.</p>
+      </div>
+      <aside class="cs-side">
+        <h5>What they came in with</h5>
+        <ul>
+          <li>Workshop pipelines in spreadsheets</li>
+          <li>Recovery casework in coaches' notebooks</li>
+          <li>Email threads as the source of truth</li>
+          <li>No structured risk or progress data</li>
+          <li>Funder reports rebuilt by hand each quarter</li>
+          <li>No clean way to keep streams separate</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- What we built -->
+<section class="section section-paper">
+  <div class="wrap">
+    <div class="cs-prose">
+      <span class="eyebrow h-eye">What we built</span>
+      <h2>A CRM that knows the difference between a workshop and a treatment plan.</h2>
+      <p>The Prevention side runs on a kanban that tracks workshops from first enquiry through delivery to reporting. Each workshop carries facilitator assignment, capacity tracking, attendee lists, and pre/post survey results that feed straight back into the record.</p>
+      <p>The Recovery side runs on case records: structured intake covering risk rating, gambling type, triggers, substance use, and support network; session logging with progress over time; and a treatment tracker visualising where every client is in their journey.</p>
+      <p>Both sides share the same contact and company directory, the same Microsoft 365 email and calendar integration, and the same invoicing engine — categorised so prevention and recovery income can be reported separately to funders without double entry.</p>
+    </div>
+
+    <div class="cs-feat-grid">
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="kanban" width="20" height="20"></i></div>
+        <h3>Workshop kanban</h3>
+        <p>Drag workshops through pipeline stages — proposed, scheduled, delivered, reported. Capacity tracking, facilitator assignment, attendee lists, all on the card.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="clipboard-list" width="20" height="20"></i></div>
+        <h3>Recovery seeker records</h3>
+        <p>Structured intake with risk rating, gambling type, triggers, substance use, and support network. Coaching sessions logged with progress ratings over time.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="file-text" width="20" height="20"></i></div>
+        <h3>Dual-stream invoicing</h3>
+        <p>Prevention and Recovery invoices generated as PDF with separate templates and reporting categories. Payment status tracked: draft, sent, paid, overdue.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="mail-check" width="20" height="20"></i></div>
+        <h3>Microsoft 365 integration</h3>
+        <p>Inbound and outbound emails captured against contact records. Calendar events sync both ways with Outlook, with contacts and recovery seekers as attendees.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="clipboard-check" width="20" height="20"></i></div>
+        <h3>Survey builder</h3>
+        <p>Pre and post-workshop feedback forms with public sharable links. Responses post directly into the case record, no manual transcription.</p>
+      </div>
+      <div class="cs-feat">
+        <div class="cs-feat-icon"><i data-lucide="bar-chart-3" width="20" height="20"></i></div>
+        <h3>Funder-ready reports</h3>
+        <p>Engagement, stage distribution, completion rates, KPIs — pulled live from the same data the team works in every day. No spreadsheet rebuild before board meetings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stack -->
+<section class="section">
+  <div class="wrap">
+    <div class="cs-prose">
+      <span class="eyebrow h-eye">How it's built</span>
+      <h2>Row-level security keeps the streams in their own lanes.</h2>
+      <p>React 19 + Supabase, with Postgres Row-Level Security keeping prevention and recovery teams in their own data lanes. Microsoft Graph powers email-thread capture and two-way calendar sync. Invoicing PDFs are generated in-browser with jsPDF and pdf-lib. Survey responses post back via shareable public links. Role-based access — admin, prevention, recovery — keeps the right people in front of the right records.</p>
+    </div>
+    <div class="cs-stack">
+      <span class="cs-stack-pill cs-stack-pill-accent">React 19</span>
+      <span class="cs-stack-pill cs-stack-pill-accent">Supabase</span>
+      <span class="cs-stack-pill">Postgres RLS</span>
+      <span class="cs-stack-pill">Microsoft Graph</span>
+      <span class="cs-stack-pill">MJML</span>
+      <span class="cs-stack-pill">jsPDF + pdf-lib</span>
+      <span class="cs-stack-pill">React Quill</span>
+      <span class="cs-stack-pill">Recharts</span>
+      <span class="cs-stack-pill">Vercel</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cs-cta-section">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="cta-band-grid"></div>
+      <h2>Running two operations from one inbox? <em>We'll fix that.</em></h2>
+      <div class="cta-band-actions">
+        <a href="mailto:hello@thedigicraft.co.uk" class="btn btn-primary btn-lg btn-arrow">Book a system audit</a>
+        <div class="cta-note">30-minute call. No sales deck. No obligation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <img src="../assets/logo-wordmark-white.png" alt="Digital Craft">
+        <p>We build custom digital systems that remove manual work and help businesses operate better.</p>
+      </div>
+      <div class="footer-col">
+        <h5>What we build</h5>
+        <ul>
+          <li><a href="../#what-we-build">Custom websites</a></li>
+          <li><a href="../#what-we-build">CRM systems</a></li>
+          <li><a href="../#what-we-build">Mobile apps</a></li>
+          <li><a href="../#what-we-build">Automation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Work</h5>
+        <ul>
+          <li><a href="../#case-studies">Case studies</a></li>
+          <li><a href="../#how-it-works">Our process</a></li>
+          <li><a href="../#problems">Problems we fix</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="mailto:hello@thedigicraft.co.uk">Contact us</a></li>
+          <li><a href="mailto:hello@thedigicraft.co.uk">Book a system audit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:hello@thedigicraft.co.uk">hello@thedigicraft.co.uk</a></li>
+          <li><a href="https://www.linkedin.com/company/thedigicraft" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Digital Craft Ltd</span>
+      <span>Built in Britain</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (window.lucide) window.lucide.createIcons();
+</script>
+</body>
+</html>

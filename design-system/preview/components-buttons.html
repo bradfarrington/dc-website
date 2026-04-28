@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.panel { padding: 22px; border-radius: 10px; display: flex; flex-direction: column; gap: 12px; }
+.panel.l { background: #fff; border: 1px solid #EAEAEA; }
+.panel.d { background: #000; border: 1px solid #2A2A2A; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.btn { font: 500 13px/1 var(--font-body); padding: 10px 16px; border-radius: 8px; border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 220ms cubic-bezier(.2,.8,.2,1); }
+.btn .arr { width: 14px; height: 1px; background: currentColor; }
+.btn-primary { background: #3B82F6; color: #fff; box-shadow: 0 0 0 0 rgba(96,165,250,0); }
+.btn-primary:hover { background: #60A5FA; box-shadow: 0 0 0 5px rgba(96,165,250,.28); }
+.btn-secondary-l { background: #fff; color: #000; border-color: #0A0A0A; }
+.btn-secondary-l:hover { background: #0A0A0A; color: #fff; }
+.btn-ghost-l { background: transparent; color: #0A0A0A; }
+.btn-ghost-l:hover { background: #F5F5F5; }
+.btn-secondary-d { background: transparent; color: #fff; border-color: #fff; }
+.btn-secondary-d:hover { background: #fff; color: #000; }
+.btn-ghost-d { background: transparent; color: #fff; }
+.btn-ghost-d:hover { background: #1A1A1A; }
+.tag { font-family: var(--font-mono); font-size: 10px; color: var(--fg-3); }
+.panel.d .tag { color: #6B6B6B; }
+</style>
+</head><body>
+<div class="card">
+  <div class="grid">
+    <div class="panel l">
+      <div class="tag">ON LIGHT</div>
+      <div class="row">
+        <button class="btn btn-primary">Book a system audit<span class="arr"></span></button>
+        <button class="btn btn-secondary-l">Read more</button>
+        <button class="btn btn-ghost-l">Cancel</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary" style="background:#60A5FA;box-shadow:0 0 0 5px rgba(96,165,250,.28)">Hover</button>
+        <button class="btn btn-primary" style="background:#2563EB;transform:translateY(1px)">Pressed</button>
+      </div>
+    </div>
+    <div class="panel d">
+      <div class="tag">ON DARK</div>
+      <div class="row">
+        <button class="btn btn-primary">Get started<span class="arr"></span></button>
+        <button class="btn btn-secondary-d">Read more</button>
+        <button class="btn btn-ghost-d">Cancel</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary" style="background:#60A5FA;box-shadow:0 0 0 5px rgba(96,165,250,.35)">Hover</button>
+        <button class="btn btn-primary" style="background:#2563EB">Pressed</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Brand colors</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.swatch {
+  display: flex; flex-direction: column; gap: 0;
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+.swatch .chip { height: 96px; }
+.swatch .meta { padding: 10px 12px; background: var(--bg); }
+.swatch .name { font-size: 13px; font-weight: 600; color: var(--fg-1); letter-spacing: -0.01em;}
+.swatch .hex { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); margin-top: 2px; }
+.grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#000"></div><div class="meta"><div class="name">Black</div><div class="hex">#000000</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#1A1A1A"></div><div class="meta"><div class="name">Bg alt</div><div class="hex">#1A1A1A</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFFFFF"></div><div class="meta"><div class="name">White</div><div class="hex">#FFFFFF</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#3B82F6"></div><div class="meta"><div class="name">Accent</div><div class="hex">#3B82F6</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#60A5FA"></div><div class="meta"><div class="name">Hover · glow</div><div class="hex">#60A5FA</div></div></div>
+  </div>
+</div>
+</body></html>

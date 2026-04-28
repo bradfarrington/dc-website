@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Badges & tags</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.stack { display: flex; flex-direction: column; gap: 14px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.badge { font: 500 11px/1 var(--font-body); letter-spacing: .04em; padding: 5px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
+.b-default { background: #F5F5F5; color: #0A0A0A; border: 1px solid #EAEAEA; }
+.b-active { background: rgba(59,130,246,.10); color: #2563EB; border: 1px solid rgba(59,130,246,.25); }
+.b-success { background: rgba(34,197,94,.10); color: #16A34A; border: 1px solid rgba(34,197,94,.25); }
+.b-warning { background: rgba(245,158,11,.10); color: #B45309; border: 1px solid rgba(245,158,11,.25); }
+.b-danger { background: rgba(239,68,68,.10); color: #B91C1C; border: 1px solid rgba(239,68,68,.25); }
+.b-outline { background: #fff; color: #0A0A0A; border: 1px solid #0A0A0A; }
+.dot { width: 6px; height: 6px; border-radius: 99px; }
+.lbl { font: 500 11px/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--fg-3); width: 90px; }
+.line { display: flex; align-items: center; gap: 14px; }
+</style>
+</head><body>
+<div class="card">
+  <div class="stack">
+    <div class="line">
+      <div class="lbl">STATUS</div>
+      <div class="row">
+        <span class="badge b-default"><span class="dot" style="background:#A3A3A3"></span>Idle</span>
+        <span class="badge b-active"><span class="dot" style="background:#3B82F6;box-shadow:0 0 6px #60A5FA"></span>Live</span>
+        <span class="badge b-success"><span class="dot" style="background:#22C55E"></span>Shipped</span>
+        <span class="badge b-warning"><span class="dot" style="background:#F59E0B"></span>Review</span>
+        <span class="badge b-danger"><span class="dot" style="background:#EF4444"></span>Blocked</span>
+      </div>
+    </div>
+    <div class="line">
+      <div class="lbl">TAGS</div>
+      <div class="row">
+        <span class="badge b-default">CRM</span>
+        <span class="badge b-default">Automation</span>
+        <span class="badge b-outline">+ Add tag</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

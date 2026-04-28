@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Motion & focus</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.panel { padding: 18px; border: 1px solid #EAEAEA; border-radius: 10px; display: flex; flex-direction: column; gap: 12px; min-height: 130px; justify-content: space-between; }
+.panel .title { font: 500 12px/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--fg-3); }
+.curve { height: 56px; }
+.tokens { display: flex; gap: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); }
+.tokens b { color: var(--fg-1); font-weight: 500; }
+.focus-row { display: flex; gap: 14px; align-items: center; }
+.input {
+  font: 400 13px/1 var(--font-body); color: #0A0A0A; background: #fff;
+  border: 1px solid #D4D4D4; border-radius: 8px; padding: 10px 12px; width: 100%;
+}
+.input.focus { border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59,130,246,.5); outline: none; }
+</style>
+</head><body>
+<div class="card">
+  <div class="row">
+    <div class="panel">
+      <div class="title">EASING · ease-out</div>
+      <svg class="curve" viewBox="0 0 200 60" preserveAspectRatio="none">
+        <path d="M2,58 C40,58 80,8 198,2" stroke="#0A0A0A" stroke-width="1.5" fill="none"></path>
+        <path d="M2,58 L198,58 M2,2 L2,58" stroke="#EAEAEA" stroke-width="1" fill="none"></path>
+      </svg>
+      <div class="tokens"><span><b>cubic-bezier</b>(.2, .8, .2, 1)</span></div>
+    </div>
+    <div class="panel">
+      <div class="title">DURATIONS</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div class="tokens"><span style="width:60px"><b>fast</b></span><span>120ms · color, opacity</span></div>
+        <div class="tokens"><span style="width:60px"><b>base</b></span><span>220ms · UI, hover</span></div>
+        <div class="tokens"><span style="width:60px"><b>slow</b></span><span>420ms · enter, modal</span></div>
+      </div>
+      <div></div>
+    </div>
+    <div class="panel" style="grid-column: 1 / -1;">
+      <div class="title">FOCUS RING · 3px / 50% accent</div>
+      <div class="focus-row">
+        <input class="input focus" value="alex@digitalcraft.co">
+        <button style="font:500 13px/1 var(--font-body);padding:10px 14px;border-radius:8px;border:0;background:#3B82F6;color:#fff;outline:none;box-shadow:0 0 0 3px rgba(59,130,246,.5);">Focused button</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>
