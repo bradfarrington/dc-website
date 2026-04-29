@@ -1,10 +1,45 @@
 <!doctype html>
+<!--
+  Digital Craft — thedigicraft.co.uk
+  © 2026 Digital Craft. All rights reserved.
+  Designed and built by Digital Craft.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Digital Craft — Replace manual work with smart, automated systems</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="assets/logo-mark-black.png">
+
+<!-- Primary SEO -->
+<title>Digital Craft — Custom Websites, CRMs & Automation for UK Businesses</title>
+<meta name="description" content="Digital Craft builds custom websites, CRM systems, and automation for UK businesses. We replace messy tool stacks with one bespoke system designed around how you actually work.">
+<meta name="keywords" content="custom CRM, bespoke software, business automation, custom websites, UK web development, SME software, workflow automation">
+<meta name="author" content="Digital Craft">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://thedigicraft.co.uk/">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Digital Craft">
+<meta property="og:title" content="Digital Craft — Custom Websites, CRMs & Automation for UK Businesses">
+<meta property="og:description" content="We build custom systems that replace manual work and disconnected tools — bespoke websites, CRMs, and automation for UK businesses.">
+<meta property="og:url" content="https://thedigicraft.co.uk/">
+<meta property="og:image" content="https://thedigicraft.co.uk/assets/og-hero.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digital Craft — Custom Websites, CRMs & Automation">
+<meta name="twitter:description" content="We build custom systems that replace manual work and disconnected tools — bespoke websites, CRMs, and automation for UK businesses.">
+<meta name="twitter:image" content="https://thedigicraft.co.uk/assets/og-hero.png">
+
+<!-- Favicons (light / dark mode aware) -->
+<link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="assets/favicon-dark.png">
+
 <link rel="stylesheet" href="colors_and_type.css">
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -1275,17 +1310,6 @@ function CaseStudies() {
   const cases = [
     {
       index: "01",
-      tag: "Practice management · Wellness clinic",
-      imgLabel: "Booking platform — admin dashboard",
-      imgIcon: "calendar-check",
-      img: "assets/case-study-images/bhh-case-study.png",
-      problem: "A holistic wellness clinic was juggling client bookings, intake medical histories, deposit payments, and reminder messages across four different tools. Confirmations were sent by hand. No-shows were eating into revenue, and the owner could never see at a glance what the week ahead actually looked like.",
-      built: "A complete practice management platform — public booking site, admin calendar, client records with full medical history, card-based deposits, and an automated reminder ladder by SMS and email at 24h, 12h, 6h, 2h, 1h, and 15 minutes before each appointment. Automated invoicing and two-way calendar sync are built in.",
-      highlights: "Public booking site with deposit-backed appointments, automated SMS and email reminder ladder down to 15 minutes before, full client medical history and treatment notes, drag-and-drop email template builder with merge tags, two-way calendar sync, and automated invoicing — all from a single admin screen.",
-      href: "case-studies/blue-horizon.html"
-    },
-    {
-      index: "02",
       tag: "CRM · Gambling-harm charity",
       imgLabel: "Casework platform — recovery dashboard",
       imgIcon: "heart-handshake",
@@ -1293,10 +1317,10 @@ function CaseStudies() {
       problem: "A gambling-harm charity was running two very different operations — prevention workshops in schools and colleges, and one-to-one recovery coaching for people in active treatment — out of spreadsheets and shared inboxes. Funder reporting meant pulling numbers together by hand. Risk and progress data on recovery clients lived in people's heads.",
       built: "A purpose-built CRM split cleanly between Prevention and Recovery: a kanban for workshop pipelines, structured recovery-seeker records with intake, risk rating, triggers, session notes and progress over time, dual-stream invoicing, two-way email and calendar sync with the team's existing tools, and a survey builder for pre/post workshop feedback that flows straight into the case record.",
       highlights: "Workshop kanban with capacity tracking, recovery-seeker case records with risk rating and progress logging, dual-stream Prevention/Recovery invoicing with PDF generation, two-way email and calendar sync with timeline views, public survey links that feed straight into the case record, and role-based access for prevention, recovery, and admin staff.",
-      href: "case-studies/against-the-odds.html"
+      href: "case-studies/against-the-odds"
     },
     {
-      index: "03",
+      index: "02",
       tag: "Commerce + CRM · Industrial laser fabrication",
       imgLabel: "Order pipeline — operations view",
       imgIcon: "zap",
@@ -1304,7 +1328,18 @@ function CaseStudies() {
       problem: "An industrial laser-cutting business was running a public store, a contact database, post-sale review chasing, and email and SMS marketing across four disconnected tools. Orders needed manual handoff between systems. Review requests went out late or not at all. Stock levels and payment records lived in different places.",
       built: "A single platform combining storefront, CRM, and marketing automation — card checkout with automatic inventory deduction, a contact database with CSV import and tagging, a multi-step review-request workflow with configurable follow-ups, email and SMS template builders with merge tags, open and click tracking, and a built-in SMS credit system. Refunds, review queueing, and analytics all run end-to-end with no human handoff.",
       highlights: "Card checkout with automatic inventory deduction and refund handling, contact CRM with CSV import and tagging, automated review-request workflow with configurable follow-ups that stop on click, email and SMS template builders with merge tags and open/click tracking, gift-card visual builder, and a built-in SMS credit system.",
-      href: "case-studies/isobex.html"
+      href: "case-studies/isobex"
+    },
+    {
+      index: "03",
+      tag: "Practice management · Wellness clinic",
+      imgLabel: "Booking platform — admin dashboard",
+      imgIcon: "calendar-check",
+      img: "assets/case-study-images/bhh-case-study.png",
+      problem: "A holistic wellness clinic was juggling client bookings, intake medical histories, deposit payments, and reminder messages across four different tools. Confirmations were sent by hand. No-shows were eating into revenue, and the owner could never see at a glance what the week ahead actually looked like.",
+      built: "A complete practice management platform — public booking site, admin calendar, client records with full medical history, card-based deposits, and an automated reminder ladder by SMS and email at 24h, 12h, 6h, 2h, 1h, and 15 minutes before each appointment. Automated invoicing and two-way calendar sync are built in.",
+      highlights: "Public booking site with deposit-backed appointments, automated SMS and email reminder ladder down to 15 minutes before, full client medical history and treatment notes, drag-and-drop email template builder with merge tags, two-way calendar sync, and automated invoicing — all from a single admin screen.",
+      href: "case-studies/blue-horizon"
     },
   ];
   return (
