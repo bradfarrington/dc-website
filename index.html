@@ -90,44 +90,56 @@ img { display: block; max-width: 100%; }
    NAV
    ============================ */
 .nav {
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--dc-fog);
-  transition: border-color var(--dur-base) var(--ease-out);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: rgba(8,10,14,0.55);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background-color var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+}
+.nav.nav-scrolled {
+  background: rgba(0,0,0,0.94);
+  border-bottom-color: rgba(255,255,255,0.12);
 }
 .nav-inner {
   display: flex; align-items: center; gap: 0; height: 68px;
 }
 .nav-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-right: 40px; }
 .nav-brand img { height: 34px; }
-.nav-brand span { font-family: var(--font-display); font-size: 19px; letter-spacing: -0.025em; color: var(--dc-black); }
+.nav-brand span { font-family: var(--font-display); font-size: 19px; letter-spacing: -0.025em; color: var(--dc-white); }
 .nav-links { display: flex; gap: 6px; flex: 1; }
 .nav-links a {
-  font-size: 14px; font-weight: 500; color: var(--dc-slate);
+  font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7);
   padding: 7px 12px; border-radius: var(--r-md);
   transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
 }
-.nav-links a:hover { color: var(--dc-black); background: var(--dc-paper); }
+.nav-links a:hover { color: var(--dc-white); background: rgba(255,255,255,0.08); }
 .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.nav .btn-ghost { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.18); }
+.nav .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.32); color: var(--dc-white); }
 .nav-hamburger {
   display: none; align-items: center; justify-content: center;
   width: 40px; height: 40px; border-radius: var(--r-md);
   border: none; background: transparent; cursor: pointer;
-  color: var(--dc-black); margin-left: auto;
+  color: var(--dc-white); margin-left: auto;
 }
-.nav-hamburger:hover { background: var(--dc-paper); }
+.nav-hamburger:hover { background: rgba(255,255,255,0.08); }
 .mobile-menu {
+  position: fixed; top: 68px; left: 0; right: 0; z-index: 49;
   display: none; flex-direction: column; gap: 0;
-  background: white; border-bottom: 1px solid var(--dc-fog);
+  background: rgba(0,0,0,0.96);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: 8px 0 16px;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
   display: block; padding: 12px 24px;
-  font-size: 15px; font-weight: 500; color: var(--dc-black);
+  font-size: 15px; font-weight: 500; color: var(--dc-white);
 }
-.mobile-menu a:hover { background: var(--dc-paper); }
+.mobile-menu a:hover { background: rgba(255,255,255,0.08); }
 .mobile-menu-cta { padding: 12px 24px; }
 
 /* ============================
@@ -135,7 +147,7 @@ img { display: block; max-width: 100%; }
    ============================ */
 .hero {
   background: var(--dc-black);
-  padding: 128px 0 112px;
+  padding: 196px 0 112px;
   position: relative; overflow: hidden;
 }
 .hero-grid {
@@ -447,6 +459,57 @@ img { display: block; max-width: 100%; }
 }
 .testimonial-name { font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 500; }
 .testimonial-role { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.testimonial-av-initial {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 18px; color: rgba(255,255,255,0.92);
+  letter-spacing: -0.02em;
+}
+.review-source {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 4px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.review-source-dot {
+  width: 6px; height: 6px; border-radius: 99px; background: var(--dc-accent);
+}
+.review-slide {
+  animation: review-fade 0.5s var(--ease-out);
+}
+@keyframes review-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.review-controls {
+  display: flex; align-items: center; gap: 14px; margin-top: 56px;
+  position: relative; flex-wrap: wrap;
+}
+.review-arrow {
+  width: 44px; height: 44px; border-radius: 99px;
+  border: 1px solid rgba(255,255,255,0.18); background: transparent;
+  color: rgba(255,255,255,0.85); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.review-arrow:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.32); color: var(--dc-white); }
+.review-dots { display: flex; gap: 8px; align-items: center; }
+.review-dot {
+  width: 8px; height: 8px; border-radius: 99px;
+  background: rgba(255,255,255,0.18); border: none; cursor: pointer; padding: 0;
+  transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.review-dot:hover { background: rgba(255,255,255,0.4); }
+.review-dot.active { background: var(--dc-accent); transform: scale(1.25); }
+.review-google-link {
+  margin-left: auto; display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85);
+  padding: 10px 18px; border-radius: 99px;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.review-google-link:hover { color: var(--dc-white); border-color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.06); }
+@media (max-width: 640px) {
+  .review-google-link { margin-left: 0; width: 100%; justify-content: center; }
+}
 
 /* ============================
    FINAL CTA
@@ -495,6 +558,7 @@ img { display: block; max-width: 100%; }
   color: var(--dc-slate); margin-bottom: 18px;
 }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li { font-size: 14px; color: var(--dc-mist); }
 .footer-col ul a {
   font-size: 14px; color: var(--dc-mist);
   transition: color var(--dur-fast) var(--ease-out);
@@ -585,6 +649,10 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-mono); font-size: 10px; color: var(--dc-slate);
   letter-spacing: 0.12em; text-transform: uppercase; position: relative; z-index: 1;
 }
+.cs-card-img img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 1;
+}
 
 .cs-grid {
   display: flex; flex-direction: column; gap: 0; margin-top: 56px;
@@ -627,7 +695,7 @@ img { display: block; max-width: 100%; }
   .nav-actions { display: none; }
   .nav-hamburger { display: flex; }
   .section { padding: 80px 0; }
-  .hero { padding: 96px 0 80px; }
+  .hero { padding: 156px 0 80px; }
   .system-layout { grid-template-columns: 1fr; gap: 48px; }
   .system-diagram { max-width: 100%; }
   .ba-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -696,6 +764,13 @@ function Icon({ name, size = 20, strokeWidth = 1.5 }) {
 /* ─── Nav ─────────────────────────────────────────────────── */
 function Nav({ onCTA }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const navLinks = [
     { label: "What we build", id: "what-we-build" },
     { label: "Problems we fix", id: "problems" },
@@ -705,10 +780,10 @@ function Nav({ onCTA }) {
   const handleNav = (id) => { setMenuOpen(false); scrollToSection(id); };
   return (
     <>
-      <nav className="nav">
+      <nav className={"nav" + (scrolled ? " nav-scrolled" : "")}>
         <div className="wrap nav-inner">
           <a href="#" className="nav-brand" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-            <img src="assets/logo-wordmark-black.png" alt="Digital Craft" />
+            <img src="assets/logo-wordmark-white.png" alt="Digital Craft" />
           </a>
           <div className="nav-links">
             {navLinks.map(l => (
@@ -716,7 +791,7 @@ function Nav({ onCTA }) {
             ))}
           </div>
           <div className="nav-actions">
-            <button className="btn btn-ghost" onClick={onCTA} style={{ fontSize: 14, padding: "7px 14px" }}>Contact</button>
+            <button className="btn btn-ghost" onClick={onCTA}>Contact</button>
             <button className="btn btn-primary btn-arrow" onClick={onCTA}>Book a system audit</button>
           </div>
           <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
@@ -1203,9 +1278,10 @@ function CaseStudies() {
       tag: "Practice management · Wellness clinic",
       imgLabel: "Booking platform — admin dashboard",
       imgIcon: "calendar-check",
+      img: "assets/case-study-images/bhh-case-study.png",
       problem: "A holistic wellness clinic was juggling client bookings, intake medical histories, deposit payments, and reminder messages across four different tools. Confirmations were sent by hand. No-shows were eating into revenue, and the owner could never see at a glance what the week ahead actually looked like.",
-      built: "A complete practice management platform — public booking site, admin calendar, client records with full medical history, Square-backed deposits, and an automated reminder ladder by SMS and email at 24h, 12h, 6h, 2h, 1h, and 15 minutes before each appointment. QuickBooks invoicing and Outlook calendar sync are built in.",
-      highlights: "Public booking site with deposit-backed appointments, automated SMS and email reminder ladder down to 15 minutes before, full client medical history and treatment notes, drag-and-drop email template builder with merge tags, Outlook calendar sync, and QuickBooks invoicing — all from a single admin screen.",
+      built: "A complete practice management platform — public booking site, admin calendar, client records with full medical history, card-based deposits, and an automated reminder ladder by SMS and email at 24h, 12h, 6h, 2h, 1h, and 15 minutes before each appointment. Automated invoicing and two-way calendar sync are built in.",
+      highlights: "Public booking site with deposit-backed appointments, automated SMS and email reminder ladder down to 15 minutes before, full client medical history and treatment notes, drag-and-drop email template builder with merge tags, two-way calendar sync, and automated invoicing — all from a single admin screen.",
       href: "case-studies/blue-horizon.html"
     },
     {
@@ -1213,9 +1289,10 @@ function CaseStudies() {
       tag: "CRM · Gambling-harm charity",
       imgLabel: "Casework platform — recovery dashboard",
       imgIcon: "heart-handshake",
+      img: "assets/case-study-images/ato-case-study.png",
       problem: "A gambling-harm charity was running two very different operations — prevention workshops in schools and colleges, and one-to-one recovery coaching for people in active treatment — out of spreadsheets and shared inboxes. Funder reporting meant pulling numbers together by hand. Risk and progress data on recovery clients lived in people's heads.",
-      built: "A purpose-built CRM split cleanly between Prevention and Recovery: a kanban for workshop pipelines, structured recovery-seeker records with intake, risk rating, triggers, session notes and progress over time, dual-stream invoicing, Microsoft Graph email and calendar sync, and a survey builder for pre/post workshop feedback that flows straight into the case record.",
-      highlights: "Workshop kanban with capacity tracking, recovery-seeker case records with risk rating and progress logging, dual-stream Prevention/Recovery invoicing with PDF generation, Microsoft 365 email and calendar sync with timeline views, public survey links that feed straight into the case record, and role-based access for prevention, recovery, and admin staff.",
+      built: "A purpose-built CRM split cleanly between Prevention and Recovery: a kanban for workshop pipelines, structured recovery-seeker records with intake, risk rating, triggers, session notes and progress over time, dual-stream invoicing, two-way email and calendar sync with the team's existing tools, and a survey builder for pre/post workshop feedback that flows straight into the case record.",
+      highlights: "Workshop kanban with capacity tracking, recovery-seeker case records with risk rating and progress logging, dual-stream Prevention/Recovery invoicing with PDF generation, two-way email and calendar sync with timeline views, public survey links that feed straight into the case record, and role-based access for prevention, recovery, and admin staff.",
       href: "case-studies/against-the-odds.html"
     },
     {
@@ -1223,9 +1300,10 @@ function CaseStudies() {
       tag: "Commerce + CRM · Industrial laser fabrication",
       imgLabel: "Order pipeline — operations view",
       imgIcon: "zap",
-      problem: "An industrial laser-cutting business was running a public store, a contact database, post-sale review chasing, and email and SMS marketing across four disconnected tools. Orders needed manual handoff between systems. Review requests went out late or not at all. Stock levels and Stripe payments lived in different places.",
-      built: "A single platform combining storefront, CRM, and marketing automation — Stripe-backed checkout with automatic inventory deduction, a contact database with CSV import and tagging, a multi-step review-request workflow with configurable follow-ups, email and SMS template builders with merge tags, open and click tracking, and a Twilio-backed SMS credit system. Edge functions handle webhooks, refunds, review queueing, and analytics end-to-end.",
-      highlights: "Stripe checkout with automatic inventory deduction and refund handling, contact CRM with CSV import and tagging, automated review-request workflow with configurable follow-ups that stop on click, email and SMS template builders with merge tags and open/click tracking, gift-card visual builder, and a Twilio-backed SMS credit system.",
+      img: "assets/case-study-images/isobex-case-study.png",
+      problem: "An industrial laser-cutting business was running a public store, a contact database, post-sale review chasing, and email and SMS marketing across four disconnected tools. Orders needed manual handoff between systems. Review requests went out late or not at all. Stock levels and payment records lived in different places.",
+      built: "A single platform combining storefront, CRM, and marketing automation — card checkout with automatic inventory deduction, a contact database with CSV import and tagging, a multi-step review-request workflow with configurable follow-ups, email and SMS template builders with merge tags, open and click tracking, and a built-in SMS credit system. Refunds, review queueing, and analytics all run end-to-end with no human handoff.",
+      highlights: "Card checkout with automatic inventory deduction and refund handling, contact CRM with CSV import and tagging, automated review-request workflow with configurable follow-ups that stop on click, email and SMS template builders with merge tags and open/click tracking, gift-card visual builder, and a built-in SMS credit system.",
       href: "case-studies/isobex.html"
     },
   ];
@@ -1241,10 +1319,16 @@ function CaseStudies() {
             <div key={i} className="cs-card">
               <div className="cs-card-img">
                 <div className="cs-card-img-grid"></div>
-                <div className="cs-card-img-dot">
-                  <Icon name={c.imgIcon} size={16} strokeWidth={1.5} />
-                </div>
-                <span className="cs-card-img-label">{c.imgLabel}</span>
+                {c.img ? (
+                  <img src={c.img} alt={c.imgLabel} />
+                ) : (
+                  <>
+                    <div className="cs-card-img-dot">
+                      <Icon name={c.imgIcon} size={16} strokeWidth={1.5} />
+                    </div>
+                    <span className="cs-card-img-label">{c.imgLabel}</span>
+                  </>
+                )}
               </div>
               <div className="cs-card-header">
                 <span className="cs-index">{c.index}</span>
@@ -1271,22 +1355,114 @@ function CaseStudies() {
   );
 }
 
-/* ─── Testimonial ────────────────────────────────────────── */
-function Testimonial() {
+/* ─── Reviews carousel ───────────────────────────────────── */
+const GBP_URL = "https://share.google/TpeWQdlnrurhMR7Wh";
+const reviews = [
+  {
+    before: "Working with Brad at Digital Craft has been a dream — he's taken our website from an outdated landing page to ",
+    highlight: "an epic overview of our services and impact",
+    after: ". We've also utilised his CRM to streamline our admin. 10/10.",
+    name: "Aaron Abbott",
+    role: null,
+  },
+  {
+    before: "Brad has ",
+    highlight: "absolutely changed the way I operate within my business",
+    after: " — streamlined my software into one easy-to-use solution helping me create funnels and sales opportunities along the way.",
+    name: "Saffron Bonser",
+    role: null,
+  },
+  {
+    before: "After a month of trying to build a basic website myself, I contacted Digital Craft — and ",
+    highlight: "an hour later my month's work was miraculously replaced",
+    after: " with a real working front page. Nothing seems impossible.",
+    name: "Mark Noblett",
+    role: null,
+  },
+  {
+    before: "Brad went above and beyond developing our new site at GamLEARN. He brought some great ideas and ",
+    highlight: "fully believed in what we do",
+    after: ".",
+    name: "Tony P",
+    role: "GamLEARN",
+  },
+  {
+    before: "Brad is incredible at what he does. ",
+    highlight: "Great communication from start to finish",
+    after: " — and to know he's there for any updates or changes is brilliant.",
+    name: "Elise Valerie",
+    role: null,
+  },
+  {
+    before: "Created a website, store and system which is user-friendly, and ",
+    highlight: "the support from Digital-Craft is extremely helpful",
+    after: ". Excited to work together towards future successes.",
+    name: "Anthony Pytlinski",
+    role: null,
+  },
+  {
+    before: "Brad had ",
+    highlight: "great vision and a good understanding",
+    after: " of how I wanted the website to look. Really pleased with the results.",
+    name: "Michael Corns",
+    role: null,
+  },
+];
+
+function Reviews() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = reviews.length;
+  const go = (next) => setIndex((next + total) % total);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setIndex(i => (i + 1) % total), 8000);
+    return () => clearInterval(id);
+  }, [paused, total]);
+
+  const r = reviews[index];
+
   return (
-    <section className="testimonial-section" data-screen-label="08 Testimonial">
+    <section className="testimonial-section" data-screen-label="08 Reviews"
+      onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <div className="testimonial-bg"></div>
       <div className="wrap" style={{ position: "relative" }}>
         <span className="eyebrow eyebrow-white">In their words</span>
-        <p className="testimonial-quote" style={{ marginTop: 28 }}>
-          "They didn't sell us software. They sat with our team, figured out where the real problems were, and <em>built exactly what we needed</em> — nothing more, nothing less."
-        </p>
-        <div className="testimonial-attr">
-          <div className="testimonial-av"></div>
-          <div>
-            <div className="testimonial-name">Priya Anand</div>
-            <div className="testimonial-role">Operations Director, Northway Logistics</div>
+        <div key={index} className="review-slide">
+          <p className="testimonial-quote" style={{ marginTop: 28 }}>
+            "{r.before}<em>{r.highlight}</em>{r.after}"
+          </p>
+          <div className="testimonial-attr">
+            <div className="testimonial-av">
+              <div className="testimonial-av-initial">{r.name.charAt(0)}</div>
+            </div>
+            <div>
+              <div className="testimonial-name">{r.name}{r.role ? `, ${r.role}` : ""}</div>
+              <div className="review-source">
+                <span className="review-source-dot"></span>
+                Verified Google review
+              </div>
+            </div>
           </div>
+        </div>
+        <div className="review-controls">
+          <button className="review-arrow" onClick={() => go(index - 1)} aria-label="Previous review">
+            <Icon name="chevron-left" size={20} />
+          </button>
+          <button className="review-arrow" onClick={() => go(index + 1)} aria-label="Next review">
+            <Icon name="chevron-right" size={20} />
+          </button>
+          <div className="review-dots">
+            {reviews.map((_, i) => (
+              <button key={i} className={"review-dot" + (i === index ? " active" : "")}
+                onClick={() => setIndex(i)} aria-label={`Go to review ${i + 1}`} />
+            ))}
+          </div>
+          <a className="review-google-link" href={GBP_URL} target="_blank" rel="noopener noreferrer">
+            See all reviews on Google
+            <Icon name="arrow-up-right" size={16} />
+          </a>
         </div>
       </div>
     </section>
@@ -1326,10 +1502,10 @@ function Footer({ onCTA }) {
           <div className="footer-col">
             <h5>What we build</h5>
             <ul>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Custom websites</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>CRM systems</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Mobile apps</a></li>
-              <li><a href="#what-we-build" onClick={e => { e.preventDefault(); scrollToSection("what-we-build"); }}>Automation</a></li>
+              <li>Custom websites</li>
+              <li>CRM systems</li>
+              <li>Mobile apps</li>
+              <li>Automation</li>
             </ul>
           </div>
           <div className="footer-col">
@@ -1343,21 +1519,19 @@ function Footer({ onCTA }) {
           <div className="footer-col">
             <h5>Company</h5>
             <ul>
-              <li><a href="mailto:hello@thedigicraft.co.uk">Contact us</a></li>
+              <li><a href="mailto:info@thedigicraft.co.uk">Contact us</a></li>
               <li><button onClick={onCTA} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 14, color: "var(--dc-mist)", padding: 0, fontFamily: "inherit", textAlign: "left" }}>Book a system audit</button></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Connect</h5>
             <ul>
-              <li><a href="mailto:hello@thedigicraft.co.uk">hello@thedigicraft.co.uk</a></li>
-              <li><a href="https://www.linkedin.com/company/thedigicraft" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="mailto:info@thedigicraft.co.uk">info@thedigicraft.co.uk</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-legal">
-          <span>© 2026 Digital Craft Ltd</span>
-          <span>Built in Britain</span>
+          <span>© 2026 Digital Craft</span>
         </div>
       </div>
     </footer>
@@ -1367,7 +1541,18 @@ function Footer({ onCTA }) {
 /* ─── Audit Modal ────────────────────────────────────────── */
 function Modal({ open, onClose, onSubmit }) {
   const [form, setForm] = useState({ name: "", email: "", company: "", problem: "" });
+  const [submitting, setSubmitting] = useState(false);
   const set = k => e => setForm(f => ({ ...f, [k]: e.target.value }));
+  const handleSubmit = async () => {
+    if (submitting) return;
+    setSubmitting(true);
+    try {
+      const ok = await onSubmit(form);
+      if (ok) setForm({ name: "", email: "", company: "", problem: "" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
   if (!open) return null;
   return (
     <div className="modal-scrim open" onClick={onClose}>
@@ -1376,14 +1561,14 @@ function Modal({ open, onClose, onSubmit }) {
         <h3>Tell us what's broken.</h3>
         <p className="modal-sub">30 minutes. We'll map the messiest part of your operation and show you what to build first. No sales deck. No obligation.</p>
         <div className="modal-field"><label>Name</label><input className="modal-input" value={form.name} onChange={set("name")} placeholder="Alex Mason" /></div>
-        <div className="modal-field"><label>Work email</label><input className="modal-input" value={form.email} onChange={set("email")} placeholder="alex@company.com" /></div>
+        <div className="modal-field"><label>Work email</label><input className="modal-input" type="email" value={form.email} onChange={set("email")} placeholder="alex@company.com" /></div>
         <div className="modal-field"><label>Company</label><input className="modal-input" value={form.company} onChange={set("company")} placeholder="Northway Logistics" /></div>
         <div className="modal-field"><label>What's the bottleneck?</label><textarea className="modal-input" rows={3} value={form.problem} onChange={set("problem")} placeholder="We're losing leads between the website and the CRM..." /></div>
         <div className="modal-actions">
-          <button className="btn btn-primary btn-arrow" style={{ flex: 1, justifyContent: "center" }} onClick={() => onSubmit(form)}>
-            Request audit
+          <button className="btn btn-primary btn-arrow" style={{ flex: 1, justifyContent: "center" }} onClick={handleSubmit} disabled={submitting}>
+            {submitting ? "Sending…" : "Request audit"}
           </button>
-          <button className="btn btn-ghost" onClick={onClose}>Cancel</button>
+          <button className="btn btn-ghost" onClick={onClose} disabled={submitting}>Cancel</button>
         </div>
       </div>
     </div>
@@ -1406,11 +1591,46 @@ function App() {
   const [toast, setToast] = useState({ show: false, msg: "" });
 
   const openCTA = () => setModalOpen(true);
-  const submitAudit = () => {
-    setModalOpen(false);
-    setToast({ show: true, msg: "Request received — we'll be in touch within 24 hours." });
+  const showToast = (msg) => {
+    setToast({ show: true, msg });
     setTimeout(() => setToast(t => ({ ...t, show: false })), 4500);
   };
+  const submitAudit = async (form) => {
+    if (!form.name.trim() || !form.email.trim() || !form.problem.trim()) {
+      showToast("Please fill in your name, email, and the bottleneck.");
+      return false;
+    }
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "c3ecc691-837f-489f-97b8-64d5a93dbac2",
+          subject: `New system audit request — ${form.company || form.name}`,
+          from_name: "Digital Craft website",
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          message: form.problem,
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || "Submission failed");
+      setModalOpen(false);
+      showToast("Request received — we'll be in touch within 24 hours.");
+      return true;
+    } catch (err) {
+      showToast("Couldn't send right now. Please try again or email info@thedigicraft.co.uk.");
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    if (window.location.hash === "#book-audit") {
+      setModalOpen(true);
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  }, []);
 
   return (
     <>
@@ -1423,7 +1643,7 @@ function App() {
       <Transformation />
       <HowItWorks />
       <CaseStudies />
-      <Testimonial />
+      <Reviews />
       <FinalCTA onCTA={openCTA} />
       <Footer onCTA={openCTA} />
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={submitAudit} />

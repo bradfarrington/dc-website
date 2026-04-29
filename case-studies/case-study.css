@@ -71,10 +71,17 @@ button { font-family: inherit; }
 
 /* --- Nav ------------------------------------------------------------ */
 .nav {
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--dc-fog);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: rgba(8,10,14,0.55);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background-color var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+}
+.nav.nav-scrolled {
+  background: rgba(0,0,0,0.94);
+  border-bottom-color: rgba(255,255,255,0.12);
 }
 .nav-inner { display: flex; align-items: center; height: 68px; }
 .nav-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
@@ -82,11 +89,11 @@ button { font-family: inherit; }
 .nav-back {
   margin-left: auto;
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 500; color: var(--dc-slate);
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7);
   padding: 7px 12px; border-radius: var(--r-md);
   transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
 }
-.nav-back:hover { color: var(--dc-black); background: var(--dc-paper); }
+.nav-back:hover { color: var(--dc-white); background: rgba(255,255,255,0.08); }
 .nav-back-arrow {
   display: inline-block; width: 14px; height: 1px; background: currentColor;
   position: relative;
@@ -101,7 +108,7 @@ button { font-family: inherit; }
 /* --- Case Hero ------------------------------------------------------ */
 .cs-hero {
   background: var(--dc-black);
-  padding: 96px 0 80px;
+  padding: 164px 0 80px;
   position: relative; overflow: hidden;
   color: var(--dc-white);
 }
@@ -145,7 +152,7 @@ button { font-family: inherit; }
   position: relative; z-index: 1;
   margin-top: 56px; padding-top: 36px;
   border-top: 1px solid rgba(255,255,255,0.08);
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
 }
 .cs-meta-item { display: flex; flex-direction: column; gap: 8px; }
 .cs-meta-label {
@@ -320,6 +327,7 @@ button { font-family: inherit; }
   color: var(--dc-slate); margin-bottom: 18px;
 }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li { font-size: 14px; color: var(--dc-mist); }
 .footer-col ul a {
   font-size: 14px; color: var(--dc-mist);
   transition: color var(--dur-fast) var(--ease-out);
@@ -340,7 +348,7 @@ button { font-family: inherit; }
 }
 @media (max-width: 640px) {
   .section { padding: 64px 0; }
-  .cs-hero { padding: 64px 0 56px; }
+  .cs-hero { padding: 132px 0 56px; }
   .cs-feat-grid { grid-template-columns: 1fr; }
   .cs-feat { border-right: none; }
   .cs-feat:nth-last-child(-n+2) { border-bottom: 1px solid var(--dc-fog); }
