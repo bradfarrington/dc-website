@@ -8,6 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        notFound: resolve(__dirname, '404.html'),
         blueHorizon: resolve(__dirname, 'case-studies/blue-horizon.html'),
         againstTheOdds: resolve(__dirname, 'case-studies/against-the-odds.html'),
         isobex: resolve(__dirname, 'case-studies/isobex.html'),

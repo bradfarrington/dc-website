@@ -1,0 +1,242 @@
+<!doctype html>
+<!--
+  Digital Craft — thedigicraft.co.uk
+  © 2026 Digital Craft. All rights reserved.
+  Designed and built by Digital Craft.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Primary SEO -->
+<title>Page not found · Digital Craft</title>
+<meta name="description" content="The page you were looking for has moved, been retired, or never existed. Head back to Digital Craft.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0a0a0a">
+
+<!-- Favicons (light / dark mode aware) -->
+<link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="assets/favicon-dark.png">
+
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="case-studies/case-study.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  /* --- 404-specific layout -------------------------------------------- */
+  .nf-hero {
+    min-height: 100vh;
+    background: var(--dc-black);
+    color: var(--dc-white);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 132px 0 96px;
+  }
+  .nf-hero-grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 100%);
+    z-index: 0;
+  }
+  .nf-hero-accent {
+    position: absolute; top: 0; left: 50%; width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--dc-accent) 50%, transparent);
+    opacity: 0.2; z-index: 0;
+  }
+  .nf-content {
+    position: relative; z-index: 1;
+    max-width: 720px;
+  }
+  .nf-code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dc-accent-hover);
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .nf-code::before {
+    content: ""; width: 24px; height: 1px; background: var(--dc-accent);
+    box-shadow: 0 0 6px rgba(96,165,250,.55);
+  }
+  .nf-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 14vw, 200px);
+    line-height: 0.9; letter-spacing: -0.05em;
+    color: var(--dc-white);
+    margin-bottom: 32px;
+  }
+  .nf-hero h1 em { font-style: normal; color: var(--dc-accent); }
+  .nf-headline {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--dc-white);
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+  .nf-lede {
+    font-size: clamp(16px, 1.4vw, 18px);
+    line-height: 1.6;
+    color: rgba(255,255,255,0.62);
+    max-width: 560px;
+    margin-bottom: 40px;
+    text-wrap: pretty;
+  }
+  .nf-actions {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-bottom: 56px;
+  }
+  .nf-links {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 680px;
+  }
+  .nf-link-label {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .nf-link {
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--dc-white);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .nf-link:hover { color: var(--dc-accent-hover); }
+  .nf-link::after {
+    content: ""; display: inline-block; width: 14px; height: 1px;
+    background: currentColor;
+    transition: width var(--dur-base) var(--ease-out);
+  }
+  .nf-link:hover::after { width: 22px; }
+
+  @media (max-width: 720px) {
+    .nf-hero { padding: 112px 0 72px; min-height: auto; }
+    .nf-links { grid-template-columns: 1fr; gap: 20px; }
+    .nf-actions .btn { flex: 1; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="assets/logo-wordmark-white.png" alt="Digital Craft">
+    </a>
+    <a href="/" class="nav-back">
+      <span class="nav-back-arrow"></span>
+      Back to home
+    </a>
+  </div>
+</nav>
+
+<!-- 404 Hero -->
+<section class="nf-hero">
+  <div class="nf-hero-grid"></div>
+  <div class="nf-hero-accent"></div>
+  <div class="wrap">
+    <div class="nf-content">
+      <span class="nf-code">Error · 404</span>
+      <h1>4<em>0</em>4</h1>
+      <h2 class="nf-headline">This page has gone missing.</h2>
+      <p class="nf-lede">The page you're looking for has moved, been retired, or never existed. Either way, it's not here. Let's get you somewhere useful.</p>
+
+      <div class="nf-actions">
+        <a href="/" class="btn btn-primary btn-lg btn-arrow">Back to home</a>
+        <a href="mailto:info@thedigicraft.co.uk" class="btn btn-outline btn-lg">Get in touch</a>
+      </div>
+
+      <div class="nf-links">
+        <div>
+          <span class="nf-link-label">See our work</span>
+          <a href="/#case-studies" class="nf-link">Case studies</a>
+        </div>
+        <div>
+          <span class="nf-link-label">How we work</span>
+          <a href="/#how-it-works" class="nf-link">Our process</a>
+        </div>
+        <div>
+          <span class="nf-link-label">Start something</span>
+          <a href="/#book-audit" class="nf-link">Book an audit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <img src="assets/logo-wordmark-white.png" alt="Digital Craft">
+        <p>We build custom digital systems that remove manual work and help businesses operate better.</p>
+      </div>
+      <div class="footer-col">
+        <h5>What we build</h5>
+        <ul>
+          <li>Custom websites</li>
+          <li>CRM systems</li>
+          <li>Mobile apps</li>
+          <li>Automation</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Work</h5>
+        <ul>
+          <li><a href="/#case-studies">Case studies</a></li>
+          <li><a href="/#how-it-works">Our process</a></li>
+          <li><a href="/#problems">Problems we fix</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="mailto:info@thedigicraft.co.uk">Contact us</a></li>
+          <li><a href="/#book-audit">Book a system audit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:info@thedigicraft.co.uk">info@thedigicraft.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Digital Craft</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (window.lucide) window.lucide.createIcons();
+  (function () {
+    const nav = document.querySelector(".nav");
+    if (!nav) return;
+    const onScroll = () => nav.classList.toggle("nav-scrolled", window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  })();
+</script>
+</body>
+</html>
